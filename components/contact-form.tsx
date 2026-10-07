@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
-import { WhatsAppIcon } from '@/components/whatsapp-icon'
+import { Send } from 'lucide-react'
 import { services, site } from '@/lib/site'
 
 const inputClass =
@@ -117,7 +117,7 @@ export function ContactForm() {
         type="submit"
         className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-7 py-4 font-semibold text-white transition-colors hover:bg-brand-green-light focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/30"
       >
-        <WhatsAppIcon className="size-4" />
+        <Send className="size-4" aria-hidden="true" />
         Send enquiry
       </button>
     </form>
