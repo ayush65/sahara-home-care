@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, Check, MessageCircle, Phone } from 'lucide-react'
+import { ArrowLeft, Check, Phone } from 'lucide-react'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { BreadcrumbSchema, ServiceSchema } from '@/components/seo/JsonLd'
 import { CtaBand, Eyebrow, ServiceCard } from '@/components/shared'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { siteConfig } from '@/lib/seo'
 import { services, site } from '@/lib/site'
 
@@ -90,7 +91,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 font-semibold text-white hover:bg-brand-green-light"
               >
-                <MessageCircle className="size-4" aria-hidden="true" />
+                <WhatsAppIcon className="size-4" />
                 Enquire on WhatsApp
               </a>
             </div>
