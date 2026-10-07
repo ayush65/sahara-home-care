@@ -31,61 +31,63 @@ export function SiteHeader() {
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
 
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-50 transition-[background-color,box-shadow] duration-300',
-        scrolled || open ? 'bg-white/95 shadow-[0_1px_0_var(--border)] backdrop-blur' : 'bg-white',
-      )}
-    >
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo />
+    <>
+      <header
+        className={cn(
+          'sticky top-0 z-50 transition-[background-color,box-shadow] duration-300',
+          scrolled || open ? 'bg-white/95 shadow-[0_1px_0_var(--border)] backdrop-blur' : 'bg-white',
+        )}
+      >
+        <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Logo />
 
-        <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center gap-1 rounded-full border border-border bg-surface p-1">
-            {navLinks.map((link) => (
-              <li key={link.href} className="relative">
-                <Link
-                  href={link.href}
-                  aria-current={isActive(link.href) ? 'page' : undefined}
-                  className={cn(
-                    'relative z-10 block rounded-full px-4 py-2 text-sm font-medium transition-colors',
-                    isActive(link.href) ? 'text-white' : 'text-foreground/75 hover:text-brand-blue',
-                  )}
-                >
-                  {isActive(link.href) && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 -z-10 rounded-full bg-brand-blue"
-                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                    />
-                  )}
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          <nav aria-label="Main" className="hidden md:block">
+            <ul className="flex items-center gap-1 rounded-full border border-border bg-surface p-1">
+              {navLinks.map((link) => (
+                <li key={link.href} className="relative">
+                  <Link
+                    href={link.href}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
+                    className={cn(
+                      'relative z-10 block rounded-full px-4 py-2 text-sm font-medium transition-colors',
+                      isActive(link.href) ? 'text-white' : 'text-foreground/75 hover:text-brand-blue',
+                    )}
+                  >
+                    {isActive(link.href) && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 -z-10 rounded-full bg-brand-blue"
+                        transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                      />
+                    )}
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <div className="flex items-center gap-2">
-          <a
-            href={site.phoneHref}
-            className="hidden items-center gap-2 rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green/90 sm:inline-flex"
-          >
-            <Phone className="size-4" aria-hidden="true" />
-            {site.phone}
-          </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-border md:hidden"
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-            <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href={site.phoneHref}
+              className="hidden items-center gap-2 rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green/90 sm:inline-flex"
+            >
+              <Phone className="size-4" aria-hidden="true" />
+              {site.phone}
+            </a>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-border md:hidden"
+            >
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+              <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       <AnimatePresence>
         {open && (
@@ -125,6 +127,6 @@ export function SiteHeader() {
           </motion.nav>
         )}
       </AnimatePresence>
-    </header>
+    </>
   )
 }

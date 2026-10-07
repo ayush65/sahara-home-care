@@ -4,7 +4,9 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, Check, MessageCircle, Phone } from 'lucide-react'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
+import { BreadcrumbSchema, ServiceSchema } from '@/components/seo/JsonLd'
 import { CtaBand, Eyebrow, ServiceCard } from '@/components/shared'
+import { siteConfig } from '@/lib/seo'
 import { services, site } from '@/lib/site'
 
 export function generateStaticParams() {
@@ -15,7 +17,35 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const service = services.find((s) => s.slug === slug)
   if (!service) return {}
-  return { title: service.title, description: service.short }
+
+  const title = service.title
+  const description = service.short
+  const url = `${siteConfig.url}/services/${service.slug}`
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'website',
+      images: [
+        {
+          url: service.image,
+          alt: service.title,
+        },
+      ],
+    },
+    twitter: {
+      title,
+      description,
+      images: [service.image],
+    },
+  }
 }
 
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -25,6 +55,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   const service = services[index]
   const Icon = service.icon
   const related = services.filter((s) => s.slug !== slug).slice(index % 8, (index % 8) + 3)
+  const pageUrl = `${siteConfig.url}/services/${service.slug}`
 
   return (
     <>
@@ -76,6 +107,15 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </Reveal>
         </div>
       </section>
+
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: siteConfig.url },
+          { name: 'Our Services', url: `${siteConfig.url}/services` },
+          { name: service.title, url: pageUrl },
+        ]}
+      />
+      <ServiceSchema name={service.title} description={service.description} url={pageUrl} />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div className="lg:col-span-2">

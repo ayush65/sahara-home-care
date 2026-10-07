@@ -2,13 +2,30 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Check, Eye, HeartHandshake, ShieldCheck, Target } from 'lucide-react'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
+import { BreadcrumbSchema } from '@/components/seo/JsonLd'
 import { CtaBand, PageHero, SectionHeading } from '@/components/shared'
+import { siteConfig } from '@/lib/seo'
 import { careHighlights } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About Us | Sahara Home Care',
   description:
     'Learn about Sahara Home Care — a trusted home healthcare service providing trained nurses, caregivers and attendants with compassion and professionalism.',
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: 'About Us | Sahara Home Care',
+    description:
+      'Compassionate, professional and reliable home healthcare — delivered with dignity in the comfort of your home.',
+    url: `${siteConfig.url}/about`,
+    type: 'website',
+  },
+  twitter: {
+    title: 'About Us | Sahara Home Care',
+    description:
+      'Compassionate, professional and reliable home healthcare — delivered with dignity in the comfort of your home.',
+  },
 }
 
 const values = [
@@ -29,6 +46,12 @@ export default function AboutPage() {
           </>
         }
         description="Sahara Home Care is a trusted home healthcare service dedicated to providing compassionate, professional and reliable care in the comfort of your home."
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: siteConfig.url },
+          { name: 'About Us', url: `${siteConfig.url}/about` },
+        ]}
       />
 
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-2 lg:gap-16 lg:px-8">

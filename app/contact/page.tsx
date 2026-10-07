@@ -2,12 +2,30 @@ import type { Metadata } from 'next'
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
+import { BreadcrumbSchema } from '@/components/seo/JsonLd'
 import { PageHero } from '@/components/shared'
+import { siteConfig } from '@/lib/seo'
 import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Contact Sahara Home Care for a free consultation. Available 24/7 by phone, WhatsApp and email.',
+  title: 'Contact Us | Sahara Home Care',
+  description:
+    'Contact Sahara Home Care for a free consultation. Available 24/7 by phone, WhatsApp and email.',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Contact Us | Sahara Home Care',
+    description:
+      'Reach out for a free consultation. Our care coordinators are available around the clock.',
+    url: `${siteConfig.url}/contact`,
+    type: 'website',
+  },
+  twitter: {
+    title: 'Contact Us | Sahara Home Care',
+    description:
+      'Reach out for a free consultation. Our care coordinators are available around the clock.',
+  },
 }
 
 const channels = [
@@ -28,6 +46,12 @@ export default function ContactPage() {
           </>
         }
         description="Reach out for a free consultation. Our care coordinators are available around the clock to answer your questions and arrange care quickly."
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: siteConfig.url },
+          { name: 'Contact Us', url: `${siteConfig.url}/contact` },
+        ]}
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-5 lg:gap-14 lg:px-8">

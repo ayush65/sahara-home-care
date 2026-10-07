@@ -1,13 +1,30 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Stagger, StaggerItem, Reveal } from '@/components/motion'
+import { BreadcrumbSchema } from '@/components/seo/JsonLd'
 import { CtaBand, PageHero, SectionHeading, ServiceCard } from '@/components/shared'
+import { siteConfig } from '@/lib/seo'
 import { services } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Our Services',
+  title: 'Our Services | Sahara Home Care',
   description:
     'Home nursing, caregivers, elderly care, doctor-on-call, physiotherapy, baby & postnatal care, medical equipment, palliative, dementia and critical care at home.',
+  alternates: {
+    canonical: '/services',
+  },
+  openGraph: {
+    title: 'Our Services | Sahara Home Care',
+    description:
+      'Complete home healthcare under one roof — from skilled nursing to everyday companionship.',
+    url: `${siteConfig.url}/services`,
+    type: 'website',
+  },
+  twitter: {
+    title: 'Our Services | Sahara Home Care',
+    description:
+      'Complete home healthcare under one roof — from skilled nursing to everyday companionship.',
+  },
 }
 
 const featured = [
@@ -27,6 +44,12 @@ export default function ServicesPage() {
           </>
         }
         description="From 24/7 nursing and caregivers to physiotherapy, doctor visits and critical care — explore the services that help your loved ones heal and thrive at home."
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: siteConfig.url },
+          { name: 'Our Services', url: `${siteConfig.url}/services` },
+        ]}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
