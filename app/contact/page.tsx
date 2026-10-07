@@ -1,0 +1,78 @@
+import type { Metadata } from 'next'
+import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { ContactForm } from '@/components/contact-form'
+import { Reveal, Stagger, StaggerItem } from '@/components/motion'
+import { PageHero } from '@/components/shared'
+import { site } from '@/lib/site'
+
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description: 'Contact Sahara Home Care for a free consultation. Available 24/7 by phone, WhatsApp and email.',
+}
+
+const channels = [
+  { icon: Phone, label: 'Call us', value: site.phone, href: site.phoneHref },
+  { icon: MessageCircle, label: 'WhatsApp', value: 'Chat with a coordinator', href: `https://wa.me/${site.whatsapp}` },
+  { icon: Mail, label: 'Email', value: site.email, href: `mailto:${site.email}` },
+  { icon: Clock, label: 'Hours', value: site.hours },
+]
+
+export default function ContactPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Contact us"
+        title={
+          <>
+            Let&apos;s talk about <span className="italic text-brand-green-light">the care you need.</span>
+          </>
+        }
+        description="Reach out for a free consultation. Our care coordinators are available around the clock to answer your questions and arrange care quickly."
+      />
+
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-5 lg:gap-14 lg:px-8">
+        <div className="flex flex-col gap-6 lg:col-span-2">
+          <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            {channels.map((c) => {
+              const content = (
+                <>
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue transition-colors group-hover:bg-brand-blue group-hover:text-white">
+                    <c.icon className="size-5" aria-hidden="true" />
+                  </span>
+                  <span className="flex flex-col">
+                    <span className="text-sm text-muted-foreground">{c.label}</span>
+                    <span className="font-semibold">{c.value}</span>
+                  </span>
+                </>
+              )
+              return (
+                <StaggerItem key={c.label}>
+                  {c.href ? (
+                    <a
+                      href={c.href}
+                      target={c.href.startsWith('http') ? '_blank' : undefined}
+                      rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="group flex items-center gap-4 rounded-3xl border border-border p-5 transition-colors hover:border-brand-blue/40"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div className="group flex items-center gap-4 rounded-3xl border border-border p-5">{content}</div>
+                  )}
+                </StaggerItem>
+              )
+            })}
+          </Stagger>
+          <Reveal className="flex items-start gap-3 rounded-3xl bg-surface p-5 text-sm text-muted-foreground">
+            <MapPin className="mt-0.5 size-4 shrink-0 text-brand-green" aria-hidden="true" />
+            {site.address}
+          </Reveal>
+        </div>
+
+        <Reveal delay={0.1} className="lg:col-span-3">
+          <ContactForm />
+        </Reveal>
+      </section>
+    </>
+  )
+}
