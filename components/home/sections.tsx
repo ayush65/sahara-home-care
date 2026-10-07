@@ -60,7 +60,7 @@ export function AboutPreview() {
         <Reveal delay={0.15}>
           <Link
             href="/about"
-            className="group inline-flex items-center gap-2 font-semibold text-brand-blue hover:text-brand-blue-dark"
+            className="group inline-flex w-fit items-center gap-2 rounded-full bg-brand-blue px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark"
           >
             More about us
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />

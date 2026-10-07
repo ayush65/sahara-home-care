@@ -118,7 +118,7 @@ export function ContactForm() {
         className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-7 py-4 font-semibold text-white transition-colors hover:bg-brand-green-light focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/30"
       >
         <MessageCircle className="size-4" aria-hidden="true" />
-        Send via WhatsApp
+        Send enquiry
       </button>
     </form>
   )

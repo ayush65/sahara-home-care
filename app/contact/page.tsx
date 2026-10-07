@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { BreadcrumbSchema } from '@/components/seo/JsonLd'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { PageHero } from '@/components/shared'
 import { siteConfig } from '@/lib/seo'
 import { site } from '@/lib/site'
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 
 const channels = [
   { icon: Phone, label: 'Call us', value: site.phone, href: site.phoneHref },
-  { icon: MessageCircle, label: 'WhatsApp', value: 'Chat with a coordinator', href: `https://wa.me/${site.whatsapp}` },
+  { icon: WhatsAppIcon, label: 'WhatsApp', value: 'Chat with a coordinator', href: `https://wa.me/${site.whatsapp}`, whatsapp: true },
   { icon: Mail, label: 'Email', value: site.email, href: `mailto:${site.email}` },
   { icon: Clock, label: 'Hours', value: site.hours },
 ]
@@ -60,7 +61,7 @@ export default function ContactPage() {
             {channels.map((c) => {
               const content = (
                 <>
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue transition-colors group-hover:bg-brand-blue group-hover:text-white">
+                  <span className={`flex size-12 shrink-0 items-center justify-center rounded-2xl transition-colors ${'whatsapp' in c && c.whatsapp ? 'bg-[#25D366]/15 text-[#128C4B] group-hover:bg-[#25D366] group-hover:text-white' : 'bg-brand-blue/10 text-brand-blue group-hover:bg-brand-blue group-hover:text-white'}`}>
                     <c.icon className="size-5" aria-hidden="true" />
                   </span>
                   <span className="flex flex-col">

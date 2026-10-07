@@ -55,15 +55,13 @@ export function CareShowcase() {
                   ))}
                 </ul>
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  {!flip && (
-                    <a
-                      href={site.phoneHref}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark"
-                    >
-                      <Phone className="size-4" aria-hidden="true" />
-                      Call now
-                    </a>
-                  )}
+                  <a
+                    href={site.phoneHref}
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark"
+                  >
+                    <Phone className="size-4" aria-hidden="true" />
+                    Call now
+                  </a>
                   <EnquireButton className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-light">
                     Enquire now
                   </EnquireButton>

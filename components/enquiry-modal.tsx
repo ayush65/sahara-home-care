@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, type ReactNode } from 'react'
-import { MessageSquareText, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { site } from '@/lib/site'
@@ -75,23 +75,19 @@ export function EnquiryModal() {
 
 export function FloatingActions() {
   return (
-    <div className="fixed bottom-5 right-5 z-[70] flex flex-col items-end gap-3">
-      <button
-        type="button"
-        onClick={openEnquiry}
-        className="inline-flex items-center gap-2 rounded-full bg-brand-blue px-5 py-3 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-brand-blue-dark"
-      >
-        <MessageSquareText className="size-4" aria-hidden="true" />
-        Enquire now
-      </button>
+    <div className="fixed bottom-5 right-5 z-[70]">
       <a
         href={`https://wa.me/${site.whatsapp}`}
-        aria-label="Chat on WhatsApp"
+        aria-label="Chat with us on WhatsApp"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105"
+        className="group relative inline-flex size-15 items-center justify-center rounded-full bg-[#25D366] p-3.5 text-white shadow-[0_10px_30px_-8px_rgba(37,211,102,0.8)] transition-transform hover:scale-105"
       >
-        <WhatsAppIcon className="size-7" />
+        <span
+          className="absolute inset-0 animate-ping rounded-full bg-[#25D366]/40 [animation-duration:2.5s]"
+          aria-hidden="true"
+        />
+        <WhatsAppIcon className="relative size-8" />
       </a>
     </div>
   )

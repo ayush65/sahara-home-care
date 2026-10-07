@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUpRight, MessageCircle, Phone } from 'lucide-react'
+import { ArrowUpRight, Phone } from 'lucide-react'
 import { Reveal } from '@/components/motion'
+import { EnquireButton } from '@/components/enquiry-modal'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { site, type Service } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -80,11 +82,12 @@ export function PageHero({ eyebrow, title, description }: { eyebrow: string; tit
 export function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon
   return (
-    <Link
-      href={`/services/${service.slug}`}
-      className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-[0_20px_40px_-20px_rgba(7,87,185,0.35)]"
-    >
-      <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-[0_20px_40px_-20px_rgba(7,87,185,0.35)]">
+      <Link
+        href={`/services/${service.slug}`}
+        aria-label={service.title}
+        className="relative block aspect-[16/10] overflow-hidden bg-surface"
+      >
         <Image
           src={service.image || '/placeholder.svg'}
           alt=""
@@ -95,24 +98,43 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 font-display text-xs font-semibold text-foreground backdrop-blur">
           {String(index + 1).padStart(2, '0')}
         </span>
+      </Link>
+      <div className="relative flex flex-1 flex-col gap-4 p-6 pt-0 sm:p-7 sm:pt-0">
+        <span className="-mt-6 flex size-12 items-center justify-center rounded-2xl border-4 border-white bg-brand-blue text-white shadow-sm transition-colors duration-300 group-hover:bg-brand-green">
+          <Icon className="size-5" aria-hidden="true" />
+        </span>
+        <div className="flex flex-1 flex-col gap-2">
+          <h3 className="text-lg font-semibold leading-snug text-foreground">
+            <Link href={`/services/${service.slug}`} className="transition-colors hover:text-brand-blue">
+              {service.title}
+            </Link>
+          </h3>
+          <p className="text-sm leading-relaxed text-muted-foreground">{service.short}</p>
+        </div>
+        <Link
+          href={`/services/${service.slug}`}
+          className="inline-flex items-center gap-1 text-sm font-semibold text-brand-green"
+        >
+          Learn more
+          <ArrowUpRight
+            className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </Link>
+        <div className="flex gap-2 border-t border-border pt-4">
+          <a
+            href={site.phoneHref}
+            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-brand-blue px-4 py-2.5 text-sm font-semibold text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
+          >
+            <Phone className="size-4" aria-hidden="true" />
+            Call now
+          </a>
+          <EnquireButton className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-brand-green px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-light">
+            Enquire now
+          </EnquireButton>
+        </div>
       </div>
-      <div className="relative flex flex-1 flex-col gap-5 p-6 pt-0 sm:p-7 sm:pt-0">
-      <span className="-mt-6 flex size-12 items-center justify-center rounded-2xl border-4 border-white bg-brand-blue text-white shadow-sm transition-colors duration-300 group-hover:bg-brand-green">
-        <Icon className="size-5" aria-hidden="true" />
-      </span>
-      <div className="flex flex-1 flex-col gap-2">
-        <h3 className="text-lg font-semibold leading-snug text-foreground">{service.title}</h3>
-        <p className="text-sm leading-relaxed text-muted-foreground">{service.short}</p>
-      </div>
-      <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-green">
-        Learn more
-        <ArrowUpRight
-          className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          aria-hidden="true"
-        />
-      </span>
-      </div>
-    </Link>
+    </article>
   )
 }
 
@@ -148,7 +170,7 @@ export function CtaBand() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 font-semibold text-white transition-colors hover:bg-brand-green-light"
             >
-              <MessageCircle className="size-4" aria-hidden="true" />
+              <WhatsAppIcon className="size-4" />
               WhatsApp us
             </a>
           </div>
