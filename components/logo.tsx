@@ -10,12 +10,12 @@ export function Logo({ className, inverted = false }: { className?: string; inve
       aria-label="Sahara Home Care — home"
     >
       <Image
-        src="/logo.png"
+        src="/logo-mark.png"
         alt="Sahara Home Health Care"
-        width={160}
-        height={90}
+        width={600}
+        height={574}
         priority
-        className="h-11 w-auto sm:h-12"
+        className="h-12 w-auto sm:h-14"
       />
     </Link>
   )
