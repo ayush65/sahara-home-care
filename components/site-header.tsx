@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, Phone, X } from 'lucide-react'
 import { Logo } from '@/components/logo'
-import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { navLinks, site } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -68,15 +67,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={`https://wa.me/${site.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Chat on WhatsApp"
-            className="inline-flex size-11 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-105"
-          >
-            <WhatsAppIcon className="size-5" />
-          </a>
           <a
             href={site.phoneHref}
             className="hidden items-center gap-2 rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green/90 sm:inline-flex"
