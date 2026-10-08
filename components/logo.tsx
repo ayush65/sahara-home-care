@@ -6,25 +6,25 @@ export function Logo({ className, inverted = false }: { className?: string; inve
   return (
     <Link
       href="/"
-      className={cn('flex items-center gap-2.5 rounded-lg', className)}
+      className={cn('flex items-center gap-3 rounded-lg', className)}
       aria-label="Sahara Home Health Care — home"
     >
       <Image
-        src="/logo-mark.png"
-        alt="Sahara Home Health Care logo"
-        width={600}
-        height={574}
+        src="/logo-main.png"
+        alt="Sahara Home Health Care"
+        width={1253}
+        height={1111}
         priority
-        className="h-11 w-auto sm:h-12"
+        className="h-12 w-auto sm:h-14"
       />
-      <span className="flex flex-col leading-none">
+      <span className="flex flex-col leading-tight">
         <span
           className={cn(
             'font-display text-xl font-semibold tracking-tight',
             inverted ? 'text-white' : 'text-brand-blue',
           )}
         >
-          Sahara
+          Sahara Home
         </span>
         <span
           className={cn(
@@ -32,7 +32,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
             inverted ? 'text-brand-green-light' : 'text-brand-green',
           )}
         >
-          Home Health Care
+          Health Care
         </span>
       </span>
     </Link>
