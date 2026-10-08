@@ -3,20 +3,23 @@ import {
   Activity,
   Baby,
   Brain,
-  Facebook,
   HandHeart,
   HeartHandshake,
   HeartPulse,
   Hospital,
-  Instagram,
-  Linkedin,
   Package,
   PhoneCall,
   Stethoscope,
-  Twitter,
-  Youtube,
   type LucideIcon,
 } from 'lucide-react'
+import type { ComponentType } from 'react'
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  XIcon,
+  YouTubeIcon,
+} from '@/components/social-icons'
 
 export const site = {
   name: 'Sahara Home Health Care',
@@ -30,12 +33,12 @@ export const site = {
 }
 
 // Replace '#' with the real profile URLs when available.
-export const socials: { label: string; href: string; icon: LucideIcon }[] = [
-  { label: 'Facebook', href: '#', icon: Facebook },
-  { label: 'Instagram', href: '#', icon: Instagram },
-  { label: 'X (Twitter)', href: '#', icon: Twitter },
-  { label: 'YouTube', href: '#', icon: Youtube },
-  { label: 'LinkedIn', href: '#', icon: Linkedin },
+export const socials: { label: string; href: string; icon: ComponentType<{ className?: string }> }[] = [
+  { label: 'Facebook', href: '#', icon: FacebookIcon },
+  { label: 'Instagram', href: '#', icon: InstagramIcon },
+  { label: 'X (Twitter)', href: '#', icon: XIcon },
+  { label: 'YouTube', href: '#', icon: YouTubeIcon },
+  { label: 'LinkedIn', href: '#', icon: LinkedInIcon },
 ]
 
 export const navLinks = [
