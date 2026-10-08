@@ -9,21 +9,21 @@ import { siteConfig } from '@/lib/seo'
 import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Sahara Home Care',
+  title: 'Contact Us | Sahara Home Health Care',
   description:
-    'Contact Sahara Home Care for a free consultation. Available 24/7 by phone, WhatsApp and email.',
+    'Contact Sahara Home Health Care for a free consultation. Available 24/7 by phone, WhatsApp and email.',
   alternates: {
     canonical: '/contact',
   },
   openGraph: {
-    title: 'Contact Us | Sahara Home Care',
+    title: 'Contact Us | Sahara Home Health Care',
     description:
       'Reach out for a free consultation. Our care coordinators are available around the clock.',
     url: `${siteConfig.url}/contact`,
     type: 'website',
   },
   twitter: {
-    title: 'Contact Us | Sahara Home Care',
+    title: 'Contact Us | Sahara Home Health Care',
     description:
       'Reach out for a free consultation. Our care coordinators are available around the clock.',
   },

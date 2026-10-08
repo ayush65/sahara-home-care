@@ -28,7 +28,7 @@ export function AboutPreview() {
         <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
           <Image
             src="/images/team.png"
-            alt="The Sahara Home Care team of nurses and caregivers"
+            alt="The Sahara Home Health Care team of nurses and caregivers"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
@@ -43,7 +43,7 @@ export function AboutPreview() {
         <SectionHeading
           eyebrow="About Sahara"
           title="Compassionate, professional & reliable care."
-          description="Sahara Home Care is a trusted home healthcare service dedicated to providing compassionate, professional and reliable care in the comfort of your home."
+          description="Sahara Home Health Care is a trusted home healthcare service dedicated to providing compassionate, professional and reliable care in the comfort of your home."
         />
         <Reveal delay={0.1}>
           <ul className="grid gap-3 sm:grid-cols-2">

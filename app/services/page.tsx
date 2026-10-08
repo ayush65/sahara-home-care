@@ -7,21 +7,21 @@ import { siteConfig } from '@/lib/seo'
 import { services } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Our Services | Sahara Home Care',
+  title: 'Our Services | Sahara Home Health Care',
   description:
     'Home nursing, caregivers, elderly care, doctor-on-call, physiotherapy, baby & postnatal care, medical equipment, palliative, dementia and critical care at home.',
   alternates: {
     canonical: '/services',
   },
   openGraph: {
-    title: 'Our Services | Sahara Home Care',
+    title: 'Our Services | Sahara Home Health Care',
     description:
       'Complete home healthcare under one roof — from skilled nursing to everyday companionship.',
     url: `${siteConfig.url}/services`,
     type: 'website',
   },
   twitter: {
-    title: 'Our Services | Sahara Home Care',
+    title: 'Our Services | Sahara Home Health Care',
     description:
       'Complete home healthcare under one roof — from skilled nursing to everyday companionship.',
   },

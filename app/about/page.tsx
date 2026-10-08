@@ -8,21 +8,21 @@ import { siteConfig } from '@/lib/seo'
 import { careHighlights } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'About Us | Sahara Home Care',
+  title: 'About Us | Sahara Home Health Care',
   description:
-    'Learn about Sahara Home Care — a trusted home healthcare service providing trained nurses, caregivers and attendants with compassion and professionalism.',
+    'Learn about Sahara Home Health Care — a trusted home healthcare service providing trained nurses, caregivers and attendants with compassion and professionalism.',
   alternates: {
     canonical: '/about',
   },
   openGraph: {
-    title: 'About Us | Sahara Home Care',
+    title: 'About Us | Sahara Home Health Care',
     description:
       'Compassionate, professional and reliable home healthcare — delivered with dignity in the comfort of your home.',
     url: `${siteConfig.url}/about`,
     type: 'website',
   },
   twitter: {
-    title: 'About Us | Sahara Home Care',
+    title: 'About Us | Sahara Home Health Care',
     description:
       'Compassionate, professional and reliable home healthcare — delivered with dignity in the comfort of your home.',
   },
@@ -39,13 +39,13 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About Sahara Home Care"
+        eyebrow="About Sahara Home Health Care"
         title={
           <>
             Bringing <span className="italic text-brand-green-light">trusted care</span> home.
           </>
         }
-        description="Sahara Home Care is a trusted home healthcare service dedicated to providing compassionate, professional and reliable care in the comfort of your home."
+        description="Sahara Home Health Care is a trusted home healthcare service dedicated to providing compassionate, professional and reliable care in the comfort of your home."
       />
       <BreadcrumbSchema
         items={[
@@ -58,7 +58,7 @@ export default function AboutPage() {
         <Reveal className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
           <Image
             src="/images/team.png"
-            alt="Sahara Home Care nurses and caregivers"
+            alt="Sahara Home Health Care nurses and caregivers"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"

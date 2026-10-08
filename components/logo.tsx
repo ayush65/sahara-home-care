@@ -7,7 +7,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
     <Link
       href="/"
       className={cn('flex items-center gap-3 rounded-lg', className)}
-      aria-label="Sahara Home Care — home"
+      aria-label="Sahara Home Health Care — home"
     >
       <Image
         src="/logo.png"
@@ -32,7 +32,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
             inverted ? 'text-brand-green-light' : 'text-brand-green',
           )}
         >
-          Home Care
+          Home Health Care
         </span>
       </span>
     </Link>

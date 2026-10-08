@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 
 export const site = {
-  name: 'Sahara Home Care',
+  name: 'Sahara Home Health Care',
   tagline: 'Compassionate care, in the comfort of home.',
   phone: '+91 98765 43210',
   phoneHref: 'tel:+919876543210',

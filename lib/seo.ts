@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: 'Sahara Home Care',
+  name: 'Sahara Home Health Care',
   tagline: 'Compassionate care, in the comfort of home.',
   description:
-    'Sahara Home Care provides trained nurses, caregivers, attendants, elderly care, physiotherapy, doctor-on-call and critical care in the comfort of your home — 24/7.',
+    'Sahara Home Health Care provides trained nurses, caregivers, attendants, elderly care, physiotherapy, doctor-on-call and critical care in the comfort of your home — 24/7.',
   url: 'https://sahara-home-care.vercel.app',
   ogImage: '/og-image.jpg',
   phone: '+91 98765 43210',
@@ -16,8 +16,8 @@ export const siteConfig = {
 } as const
 
 export const seo = {
-  titleTemplate: '%s | Sahara Home Care',
-  defaultTitle: 'Sahara Home Care — Trusted Home Healthcare Services',
+  titleTemplate: '%s | Sahara Home Health Care',
+  defaultTitle: 'Sahara Home Health Care — Trusted Home Healthcare Services',
   defaultDescription: siteConfig.description,
   keywords: [
     'home nursing services',

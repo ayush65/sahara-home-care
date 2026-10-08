@@ -86,7 +86,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 Call to book
               </a>
               <a
-                href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hello Sahara Home Care, I'd like to know more about ${service.title}.`)}`}
+                href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hello Sahara Home Health Care, I'd like to know more about ${service.title}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 font-semibold text-white hover:bg-brand-green-light"
@@ -99,7 +99,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <Reveal delay={0.1} className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
             <Image
               src={service.image}
-              alt={`${service.title} provided by Sahara Home Care`}
+              alt={`${service.title} provided by Sahara Home Health Care`}
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"

@@ -18,19 +18,19 @@ export const metadata: Metadata = {
     default: 'Trusted Home Healthcare Services',
   },
   description:
-    'Sahara Home Care provides trained nurses, caregivers, attendants, elderly care, physiotherapy, doctor-on-call and critical care in the comfort of your home — 24/7.',
+    'Sahara Home Health Care provides trained nurses, caregivers, attendants, elderly care, physiotherapy, doctor-on-call and critical care in the comfort of your home — 24/7.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Trusted Home Healthcare Services | Sahara Home Care',
+    title: 'Trusted Home Healthcare Services | Sahara Home Health Care',
     description:
       'Trained nurses, caregivers and attendants for elderly people, patients recovering from illness or surgery — available 24/7 at home.',
     url: siteConfig.url,
     type: 'website',
   },
   twitter: {
-    title: 'Trusted Home Healthcare Services | Sahara Home Care',
+    title: 'Trusted Home Healthcare Services | Sahara Home Health Care',
     description:
       'Trained nurses, caregivers and attendants for elderly people, patients recovering from illness or surgery — available 24/7 at home.',
   },

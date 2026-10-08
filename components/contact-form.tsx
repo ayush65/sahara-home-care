@@ -25,7 +25,7 @@ export function ContactForm() {
     setError(null)
 
     const text = [
-      'Hello Sahara Home Care,',
+      'Hello Sahara Home Health Care,',
       `Name: ${name}`,
       `Phone: ${phone}`,
       service && `Service: ${service}`,

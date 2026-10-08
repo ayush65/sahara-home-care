@@ -31,7 +31,7 @@ export function CareShowcase() {
               <Reveal className={cn('relative aspect-[4/3] overflow-hidden rounded-[2rem]', flip && 'lg:order-2')}>
                 <Image
                   src={s.image}
-                  alt={`${s.title} by Sahara Home Care`}
+                  alt={`${s.title} by Sahara Home Health Care`}
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
