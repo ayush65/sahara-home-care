@@ -24,15 +24,15 @@ export function Logo({ className, inverted = false }: { className?: string; inve
             inverted ? 'text-white' : 'text-brand-blue',
           )}
         >
-          Sahara Home
+          Sahara
         </span>
         <span
           className={cn(
-            'text-lg font-black uppercase tracking-wide sm:text-xl',
+            'whitespace-nowrap text-sm font-black uppercase tracking-wide sm:text-base',
             inverted ? 'text-white' : 'text-brand-blue',
           )}
         >
-          Health Care
+          Home Health Care
         </span>
       </span>
     </Link>
