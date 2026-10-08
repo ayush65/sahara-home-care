@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from 'react'
 import { X } from 'lucide-react'
+import { Phone } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { site } from '@/lib/site'
@@ -75,20 +76,35 @@ export function EnquiryModal() {
 
 export function FloatingActions() {
   return (
-    <div className="fixed bottom-5 right-5 z-[70]">
-      <a
-        href={`https://wa.me/${site.whatsapp}`}
-        aria-label="Chat with us on WhatsApp"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative inline-flex size-15 items-center justify-center rounded-full bg-[#25D366] p-3.5 text-white shadow-[0_10px_30px_-8px_rgba(37,211,102,0.8)] transition-transform hover:scale-105"
-      >
-        <span
-          className="absolute inset-0 animate-ping rounded-full bg-[#25D366]/40 [animation-duration:2.5s]"
-          aria-hidden="true"
-        />
-        <WhatsAppIcon className="relative size-8" />
-      </a>
-    </div>
+    <>
+      <div className="fixed bottom-5 left-5 z-[70]">
+        <a
+          href={site.phoneHref}
+          aria-label={`Call us at ${site.phone}`}
+          className="group relative inline-flex items-center justify-center rounded-full bg-brand-blue p-3.5 text-white shadow-[0_10px_30px_-8px_rgba(7,87,185,0.8)] transition-transform hover:scale-105"
+        >
+          <span
+            className="absolute inset-0 animate-ping rounded-full bg-brand-blue/40 [animation-duration:2.5s]"
+            aria-hidden="true"
+          />
+          <Phone className="relative size-8" aria-hidden="true" />
+        </a>
+      </div>
+      <div className="fixed bottom-5 right-5 z-[70]">
+        <a
+          href={`https://wa.me/${site.whatsapp}`}
+          aria-label="Chat with us on WhatsApp"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative inline-flex size-15 items-center justify-center rounded-full bg-[#25D366] p-3.5 text-white shadow-[0_10px_30px_-8px_rgba(37,211,102,0.8)] transition-transform hover:scale-105"
+        >
+          <span
+            className="absolute inset-0 animate-ping rounded-full bg-[#25D366]/40 [animation-duration:2.5s]"
+            aria-hidden="true"
+          />
+          <WhatsAppIcon className="relative size-8" />
+        </a>
+      </div>
+    </>
   )
 }

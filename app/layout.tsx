@@ -6,6 +6,7 @@ import { EnquiryModal, FloatingActions } from '@/components/enquiry-modal'
 import { OrganizationSchema, WebSiteSchema } from '@/components/seo/JsonLd'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
+import { TopBar } from '@/components/top-bar'
 import { seo, siteConfig } from '@/lib/seo'
 import './globals.css'
 
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <OrganizationSchema />
         <WebSiteSchema />
         <MotionProvider>
+          <TopBar />
           <SiteHeader />
           <main>{children}</main>
           <SiteFooter />
