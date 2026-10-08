@@ -79,6 +79,26 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+
+  /* Custom scrollbar – small, rounded, subtle */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-blue-dark/40 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-blue-dark/60;
+  }
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-brand-blue-dark) transparent;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

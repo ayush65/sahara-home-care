@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Merriweather, Nunito_Sans } from 'next/font/google'
 import { MotionProvider } from '@/components/motion'
 import { EnquiryModal, FloatingActions } from '@/components/enquiry-modal'
+import { LenisProvider } from '@/components/lenis-provider'
 import { OrganizationSchema, WebSiteSchema } from '@/components/seo/JsonLd'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
@@ -89,12 +90,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <OrganizationSchema />
         <WebSiteSchema />
         <MotionProvider>
-          <TopBar />
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
-          <FloatingActions />
-          <EnquiryModal />
+          <LenisProvider>
+            <TopBar />
+            <SiteHeader />
+            <main>{children}</main>
+            <SiteFooter />
+            <FloatingActions />
+            <EnquiryModal />
+          </LenisProvider>
         </MotionProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

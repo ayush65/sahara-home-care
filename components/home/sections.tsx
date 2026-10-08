@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Check, HeartHandshake, Quote, ShieldCheck, Sparkles, Users } from 'lucide-react'
+import { ArrowRight, Check, HeartHandshake, Quote, ShieldCheck, Sparkles, Star, Users } from 'lucide-react'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { SectionHeading, ServiceCard } from '@/components/shared'
 import { careHighlights, services } from '@/lib/site'
@@ -186,18 +186,48 @@ const testimonials = [
       'After my father’s surgery, the Sahara nurse cared for him like her own. His recovery at home was faster and far more comfortable.',
     name: 'Ritika S.',
     role: 'Daughter of patient',
+    rating: 5,
+    avatarColor: 'bg-emerald-500',
   },
   {
     quote:
       'Living abroad, I worried constantly about my mother. Their caregiver and daily updates gave our family real peace of mind.',
     name: 'Arjun M.',
     role: 'Son, living overseas',
+    rating: 5,
+    avatarColor: 'bg-sky-500',
   },
   {
     quote:
       'The physiotherapist was patient and encouraging. Within weeks, my husband was walking confidently again after his knee replacement.',
     name: 'Meena K.',
     role: 'Wife of patient',
+    rating: 4,
+    avatarColor: 'bg-violet-500',
+  },
+  {
+    quote:
+      'We started with just a few hours a day, and the attendant became a member of our family. The transition was seamless.',
+    name: 'Deepan R.',
+    role: 'Grandson',
+    rating: 5,
+    avatarColor: 'bg-amber-500',
+  },
+  {
+    quote:
+      'Very responsive and professional. The care coordinator made sure all our questions were answered quickly.',
+    name: 'Sonia T.',
+    role: 'Daughter',
+    rating: 5,
+    avatarColor: 'bg-rose-500',
+  },
+  {
+    quote:
+      'The 24/7 on‑call doctor gave us confidence we could get help right away. The staff also followed up regularly.',
+    name: 'Anil P.',
+    role: 'Son',
+    rating: 4,
+    avatarColor: 'bg-blue-500',
   },
 ]
 
@@ -209,8 +239,27 @@ export function Testimonials() {
         {testimonials.map((t) => (
           <StaggerItem key={t.name}>
             <figure className="flex h-full flex-col justify-between gap-6 rounded-3xl border border-border p-7">
+              <div className="flex items-center gap-3">
+                {/* Avatar with first initial */}
+                <span className={`flex size-10 items-center justify-center rounded-full text-white font-semibold ${t.avatarColor}`}>
+                  {t.name.charAt(0)}
+                </span>
+                <div>
+                  <p className="font-semibold">{t.name}</p>
+                  <p className="text-sm text-muted-foreground">{t.role}</p>
+                </div>
+              </div>
+
               <Quote className="size-8 text-brand-green" aria-hidden="true" />
+
               <blockquote className="flex-1 text-pretty font-display text-lg leading-relaxed">“{t.quote}”</blockquote>
+
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className={i < t.rating ? 'size-5 fill-amber-400 stroke-amber-400' : 'size-5 fill-gray-300 stroke-gray-300'} />
+                ))}
+              </div>
+
               <figcaption>
                 <p className="font-semibold">{t.name}</p>
                 <p className="text-sm text-muted-foreground">{t.role}</p>
