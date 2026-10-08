@@ -62,6 +62,16 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     <>
       <section className="bg-surface">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-16 lg:px-8">
+          <Reveal delay={0.1} className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
+            <Image
+              src={service.image}
+              alt={`${service.title} provided by Sahara Home Health Care`}
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </Reveal>
           <Reveal className="flex flex-col gap-6">
             <Link
               href="/services"
@@ -95,16 +105,6 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 Enquire on WhatsApp
               </a>
             </div>
-          </Reveal>
-          <Reveal delay={0.1} className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
-            <Image
-              src={service.image}
-              alt={`${service.title} provided by Sahara Home Health Care`}
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
           </Reveal>
         </div>
       </section>
