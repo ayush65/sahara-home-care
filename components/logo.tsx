@@ -20,7 +20,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
       <span className="flex flex-col leading-tight">
         <span
           className={cn(
-            'text-lg font-bold uppercase tracking-wide sm:text-xl',
+            'text-lg font-black uppercase tracking-wide sm:text-xl',
             inverted ? 'text-white' : 'text-brand-blue',
           )}
         >
@@ -28,7 +28,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
         </span>
         <span
           className={cn(
-            'text-lg font-bold uppercase tracking-wide sm:text-xl',
+            'text-lg font-black uppercase tracking-wide sm:text-xl',
             inverted ? 'text-white' : 'text-brand-blue',
           )}
         >
