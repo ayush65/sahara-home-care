@@ -9,7 +9,7 @@ import { siteConfig } from '@/lib/seo'
 import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Sahara Home Health Care',
+  title: 'Contact Us',
   description:
     'Contact Sahara Home Health Care for a free consultation. Available 24/7 by phone, WhatsApp and email.',
   alternates: {

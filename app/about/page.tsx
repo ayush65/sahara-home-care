@@ -8,7 +8,7 @@ import { siteConfig } from '@/lib/seo'
 import { careHighlights } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'About Us | Sahara Home Health Care',
+  title: 'About Us',
   description:
     'Learn about Sahara Home Health Care — a trusted home healthcare service providing trained nurses, caregivers and attendants with compassion and professionalism.',
   alternates: {

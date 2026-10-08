@@ -15,7 +15,7 @@ import { siteConfig } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Trusted Home Healthcare Services',
+    absolute: 'Trusted Home Healthcare Services | Sahara Home Health Care',
   },
   description:
     'Sahara Home Health Care provides trained nurses, caregivers, attendants, elderly care, physiotherapy, doctor-on-call and critical care in the comfort of your home — 24/7.',
