@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Nunito_Sans, Playfair_Display } from 'next/font/google'
+import { Merriweather, Nunito_Sans } from 'next/font/google'
 import { MotionProvider } from '@/components/motion'
 import { EnquiryModal, FloatingActions } from '@/components/enquiry-modal'
 import { OrganizationSchema, WebSiteSchema } from '@/components/seo/JsonLd'
@@ -10,10 +10,11 @@ import { seo, siteConfig } from '@/lib/seo'
 import './globals.css'
 
 const jakarta = Nunito_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap' })
-const fraunces = Playfair_Display({
+const fraunces = Merriweather({
   subsets: ['latin'],
   variable: '--font-fraunces',
   display: 'swap',
+  weight: ['400', '700', '900'],
   style: ['normal', 'italic'],
 })
 
