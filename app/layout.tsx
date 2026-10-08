@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Fraunces, Plus_Jakarta_Sans } from 'next/font/google'
+import { Manrope, Newsreader } from 'next/font/google'
 import { MotionProvider } from '@/components/motion'
 import { EnquiryModal, FloatingActions } from '@/components/enquiry-modal'
 import { OrganizationSchema, WebSiteSchema } from '@/components/seo/JsonLd'
@@ -9,8 +9,13 @@ import { SiteHeader } from '@/components/site-header'
 import { seo, siteConfig } from '@/lib/seo'
 import './globals.css'
 
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap' })
-const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', display: 'swap' })
+const jakarta = Manrope({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap' })
+const fraunces = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  style: ['normal', 'italic'],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
