@@ -32,7 +32,7 @@ export function Hero() {
           </motion.div>
           <motion.h1
             {...fadeUp(0.08)}
-            className="text-balance font-display text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+            className="text-balance font-display text-5xl font-bold leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-8xl"
           >
             Care that feels like <span className="italic text-brand-blue">family</span>,{' '}
             <span className="relative isolate inline-block">
@@ -45,7 +45,7 @@ export function Hero() {
           </motion.h1>
           <motion.p
             {...fadeUp(0.16)}
-            className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
+            className="max-w-xl text-pretty text-xl leading-relaxed text-muted-foreground"
           >
             Trained nurses, caregivers and attendants for elderly people, patients recovering from illness or
             surgery, and anyone who needs help with daily living — available 24/7.
