@@ -38,7 +38,7 @@ export function SiteHeader() {
           scrolled || open ? 'bg-white/95 shadow-[0_1px_0_var(--border)] backdrop-blur' : 'bg-white',
         )}
       >
-        <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Logo />
 
           <nav aria-label="Main" className="hidden md:block">
@@ -98,7 +98,7 @@ export function SiteHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-18 bottom-0 z-40 overflow-y-auto bg-white px-4 pb-8 pt-4 md:hidden"
+            className="fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto bg-white px-4 pb-8 pt-4 md:hidden"
           >
             <ul className="flex flex-col divide-y divide-border">
               {navLinks.map((link) => (

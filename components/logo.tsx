@@ -15,7 +15,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
         width={1253}
         height={1111}
         priority
-        className="h-12 w-auto sm:h-14"
+        className="h-14 w-auto sm:h-16"
       />
       <span className="flex flex-col leading-tight">
         <span

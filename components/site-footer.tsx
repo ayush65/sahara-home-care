@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
-import { navLinks, services, site } from '@/lib/site'
+import { navLinks, services, site, socials } from '@/lib/site'
 
 export function SiteFooter() {
   return (
@@ -14,6 +14,21 @@ export function SiteFooter() {
             Trusted, compassionate and professional home healthcare — delivered with dignity in the comfort of
             your home.
           </p>
+          <ul aria-label="Social media" className="mt-2 flex items-center gap-2">
+            {socials.map((s) => (
+              <li key={s.label}>
+                <a
+                  href={s.href}
+                  aria-label={`Sahara Home Health Care on ${s.label}`}
+                  target={s.href.startsWith('http') ? '_blank' : undefined}
+                  rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="inline-flex size-10 items-center justify-center rounded-full bg-white/10 text-white/80 transition-colors hover:bg-brand-green hover:text-white"
+                >
+                  <s.icon className="size-4" aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div>

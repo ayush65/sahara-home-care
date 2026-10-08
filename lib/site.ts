@@ -3,13 +3,18 @@ import {
   Activity,
   Baby,
   Brain,
+  Facebook,
   HandHeart,
   HeartHandshake,
   HeartPulse,
   Hospital,
+  Instagram,
+  Linkedin,
   Package,
   PhoneCall,
   Stethoscope,
+  Twitter,
+  Youtube,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -23,6 +28,15 @@ export const site = {
   address: 'Serving families across the city & nearby areas',
   hours: 'Available 24 hours, 7 days a week',
 }
+
+// Replace '#' with the real profile URLs when available.
+export const socials: { label: string; href: string; icon: LucideIcon }[] = [
+  { label: 'Facebook', href: '#', icon: Facebook },
+  { label: 'Instagram', href: '#', icon: Instagram },
+  { label: 'X (Twitter)', href: '#', icon: Twitter },
+  { label: 'YouTube', href: '#', icon: Youtube },
+  { label: 'LinkedIn', href: '#', icon: Linkedin },
+]
 
 export const navLinks = [
   { href: '/', label: 'Home' },
