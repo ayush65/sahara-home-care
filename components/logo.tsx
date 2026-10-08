@@ -20,7 +20,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
       <span className="flex flex-col leading-tight">
         <span
           className={cn(
-            'font-display text-xl font-semibold tracking-tight',
+            'text-lg font-bold uppercase tracking-wide sm:text-xl',
             inverted ? 'text-white' : 'text-brand-blue',
           )}
         >
@@ -28,8 +28,8 @@ export function Logo({ className, inverted = false }: { className?: string; inve
         </span>
         <span
           className={cn(
-            'text-[11px] font-semibold uppercase tracking-[0.2em]',
-            inverted ? 'text-brand-green-light' : 'text-brand-green',
+            'text-lg font-bold uppercase tracking-wide sm:text-xl',
+            inverted ? 'text-white' : 'text-brand-blue',
           )}
         >
           Health Care
