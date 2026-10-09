@@ -6,10 +6,10 @@ import { navLinks, services, site, socials } from '@/lib/site'
 
 export function SiteFooter() {
   return (
-    <footer className="bg-brand-blue-dark text-white">
+    <footer className="bg-brand-green-dark text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div className="flex flex-col gap-4">
-          <Logo inverted />
+          <Logo inverted imgClassName="h-10 sm:h-12" />
           <p className="max-w-xs text-sm leading-relaxed text-white/70">
             Trusted, compassionate and professional home healthcare — delivered with dignity in the comfort of
             your home.

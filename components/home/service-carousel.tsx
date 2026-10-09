@@ -104,7 +104,7 @@ export function ServiceCarousel({
             key={s.id}
             aria-hidden={i !== safeIndex}
             className={cn(
-              'absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-blue-dark/90 via-brand-blue-dark/55 to-transparent p-6 transition-opacity ease-out sm:p-7',
+              'absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-green-dark/90 via-brand-green-dark/55 to-transparent p-6 transition-opacity ease-out sm:p-7',
               reduceMotion ? 'duration-300' : 'duration-700',
               i === safeIndex ? 'opacity-100' : 'opacity-0',
             )}
@@ -174,7 +174,7 @@ function CarouselArrow({
       onClick={onClick}
       aria-label={label}
       className={cn(
-        'absolute top-1/2 z-10 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand-blue shadow-lg backdrop-blur transition hover:scale-105 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
+        'absolute top-1/2 z-10 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand-green shadow-lg backdrop-blur transition hover:scale-105 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
         side === 'left' ? 'left-3' : 'right-3',
       )}
     >

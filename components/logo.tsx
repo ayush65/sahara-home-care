@@ -2,39 +2,42 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
-export function Logo({ className, inverted = false }: { className?: string; inverted?: boolean }) {
+/**
+ * The supplied `final logo.png` is a landscape lockup that already contains the
+ * "SAHARA HOME HEALTHCARE" wordmark, so no text is rendered alongside it.
+ *
+ * `inverted` is used on the dark footer — because the artwork carries brand
+ * colours (green + blue), it cannot simply be inverted, so it sits on a white
+ * pill instead to stay legible.
+ */
+export function Logo({
+  className,
+  imgClassName,
+  inverted = false,
+}: {
+  className?: string
+  imgClassName?: string
+  inverted?: boolean
+}) {
   return (
     <Link
       href="/"
-      className={cn('flex items-center gap-3 rounded-lg', className)}
       aria-label="Sahara Home Health Care — home"
+      className={cn(
+        'inline-flex items-center rounded-xl',
+        inverted ? 'bg-white px-4 py-3 shadow-sm' : '',
+        className,
+      )}
     >
       <Image
-        src="/logo-main.png"
+        src="/logo-final.png"
         alt="Sahara Home Health Care"
-        width={1253}
-        height={1111}
+        width={1893}
+        height={573}
         priority
-        className="h-14 w-auto sm:h-16"
+        sizes="(min-width: 1024px) 240px, 180px"
+        className={cn('w-auto', imgClassName ?? 'h-9 sm:h-11')}
       />
-      <span className="flex flex-col leading-tight">
-        <span
-          className={cn(
-            'text-lg font-black uppercase tracking-wide sm:text-xl',
-            inverted ? 'text-white' : 'text-brand-blue',
-          )}
-        >
-          Sahara
-        </span>
-        <span
-          className={cn(
-            'whitespace-nowrap text-sm font-black uppercase tracking-wide sm:text-base',
-            inverted ? 'text-white' : 'text-brand-blue',
-          )}
-        >
-          Home Health Care
-        </span>
-      </span>
     </Link>
   )
 }

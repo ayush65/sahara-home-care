@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Stagger, StaggerItem, Reveal } from '@/components/motion'
 import { BreadcrumbSchema } from '@/components/seo/JsonLd'
 import { ServicesBanner } from '@/components/home/services-banner'
-import { CtaBand, PageHero, SectionHeading, ServiceCard } from '@/components/shared'
+import { CtaBand, SectionHeading, ServiceCard } from '@/components/shared'
 import { siteConfig } from '@/lib/seo'
 import { services } from '@/lib/site'
 
@@ -37,15 +37,6 @@ const featured = [
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Our home healthcare services"
-        title={
-          <>
-            Every kind of care, <span className="text-brand-green-light">at your doorstep.</span>
-          </>
-        }
-        description="From 24/7 nursing and caregivers to physiotherapy, doctor visits and critical care — explore the services that help your loved ones heal and thrive at home."
-      />
       <BreadcrumbSchema
         items={[
           { name: 'Home', url: siteConfig.url },
@@ -53,7 +44,8 @@ export default function ServicesPage() {
         ]}
       />
 
-      <ServicesBanner />
+      {/* No hero band on this page — the image carousel leads instead. */}
+      <ServicesBanner variant="top" />
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -78,7 +70,7 @@ export default function ServicesPage() {
                   sizes="(min-width: 768px) 33vw, 100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-dark/85 via-brand-blue-dark/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-green-dark/85 via-brand-green-dark/10 to-transparent" />
                 <p className="absolute inset-x-6 bottom-6 font-display text-2xl font-semibold text-white">{f.title}</p>
               </Reveal>
             ))}

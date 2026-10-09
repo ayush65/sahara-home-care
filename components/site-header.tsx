@@ -50,13 +50,13 @@ export function SiteHeader() {
                     aria-current={isActive(link.href) ? 'page' : undefined}
                     className={cn(
                       'relative z-10 block rounded-full px-4 py-2 text-sm font-medium transition-colors',
-                      isActive(link.href) ? 'text-white' : 'text-foreground/75 hover:text-brand-blue',
+                      isActive(link.href) ? 'text-white' : 'text-foreground/75 hover:text-brand-green',
                     )}
                   >
                     {isActive(link.href) && (
                       <motion.span
                         layoutId="nav-pill"
-                        className="absolute inset-0 -z-10 rounded-full bg-brand-blue"
+                        className="absolute inset-0 -z-10 rounded-full bg-brand-green"
                         transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                       />
                     )}
@@ -109,7 +109,7 @@ export function SiteHeader() {
                     aria-current={isActive(link.href) ? 'page' : undefined}
                     className={cn(
                       'block py-4 font-display text-2xl',
-                      isActive(link.href) ? 'text-brand-blue' : 'text-foreground',
+                      isActive(link.href) ? 'text-brand-green' : 'text-foreground',
                     )}
                   >
                     {link.label}

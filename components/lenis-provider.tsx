@@ -49,7 +49,7 @@ export function LenisProvider({ children }: { children: ReactNode }) {
         <button
           aria-label="Scroll to top"
           onClick={scrollToTop}
-          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brand-blue p-3 text-white shadow-lg transition-transform hover:scale-105"
+          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brand-green p-3 text-white shadow-lg transition-transform hover:scale-105"
         >
           <ArrowUp className="size-5" />
         </button>

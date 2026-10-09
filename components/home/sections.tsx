@@ -60,7 +60,7 @@ export function AboutPreview() {
         <Reveal delay={0.15}>
           <Link
             href="/about"
-            className="group inline-flex w-fit items-center gap-2 rounded-full bg-brand-blue px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark"
+            className="group inline-flex w-fit items-center gap-2 rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark"
           >
             More about us
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -84,7 +84,7 @@ export function ServicesPreview() {
           <Reveal>
             <Link
               href="/services"
-              className="group inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold hover:border-brand-blue hover:text-brand-blue"
+              className="group inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold hover:border-brand-green hover:text-brand-green"
             >
               View all services
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -158,7 +158,7 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="bg-brand-blue-dark text-white">
+    <section className="bg-brand-green-dark text-white">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <Reveal className="flex max-w-2xl flex-col gap-4">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-green-light">How it works</span>
@@ -168,7 +168,7 @@ export function Process() {
         </Reveal>
         <Stagger className="mt-14 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <StaggerItem key={s.title} className="flex flex-col gap-4 bg-brand-blue-dark p-7">
+            <StaggerItem key={s.title} className="flex flex-col gap-4 bg-brand-green-dark p-7">
               <span className="font-display text-5xl font-semibold text-brand-green-light">0{i + 1}</span>
               <h3 className="text-lg font-semibold">{s.title}</h3>
               <p className="text-sm leading-relaxed text-white/70">{s.body}</p>

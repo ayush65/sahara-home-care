@@ -5,7 +5,7 @@ import { Send } from 'lucide-react'
 import { services, site } from '@/lib/site'
 
 const inputClass =
-  'w-full rounded-2xl border border-input bg-white px-4 py-3.5 text-base outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/10'
+  'w-full rounded-2xl border border-input bg-white px-4 py-3.5 text-base outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-brand-green focus:ring-4 focus:ring-brand-green/10'
 
 export function ContactForm() {
   const [error, setError] = useState<string | null>(null)
@@ -43,7 +43,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="flex flex-col gap-6 rounded-[2rem] border border-border bg-white p-6 shadow-[0_30px_60px_-30px_rgba(22,119,184,0.25)] sm:p-10"
+      className="flex flex-col gap-6 rounded-[2rem] border border-border bg-white p-6 shadow-[0_30px_60px_-30px_rgba(18,165,42,0.25)] sm:p-10"
     >
       <div className="flex flex-col gap-2">
         <h2 className="font-display text-2xl font-semibold sm:text-3xl">Request a free consultation</h2>

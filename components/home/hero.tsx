@@ -38,7 +38,7 @@ export function Hero() {
             {...fadeUp(0.08)}
             className="text-balance font-display text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
           >
-            Care that feels like <span className="text-brand-blue">family</span>,{' '}
+            Care that feels like <span className="text-brand-green">family</span>,{' '}
             <span className="relative isolate inline-block">
               right at home.
               <span
@@ -57,7 +57,7 @@ export function Hero() {
           <motion.div {...fadeUp(0.24)} className="flex flex-col gap-3 sm:flex-row">
             <a
               href={site.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-7 py-4 font-semibold text-white shadow-[0_12px_30px_-12px_rgba(22,119,184,0.7)] transition-colors hover:bg-brand-blue-dark"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-7 py-4 font-semibold text-white shadow-[0_12px_30px_-12px_rgba(18,165,42,0.7)] transition-colors hover:bg-brand-green-dark"
             >
               <Phone className="size-4" aria-hidden="true" />
               Book a free consultation
@@ -78,7 +78,7 @@ export function Hero() {
             ].map((s) => (
               <div key={s.v} className="flex flex-col gap-1">
                 <dt className="sr-only">{s.v}</dt>
-                <dd className="font-display text-2xl font-semibold text-brand-blue sm:text-3xl">{s.k}</dd>
+                <dd className="font-display text-2xl font-semibold text-brand-green sm:text-3xl">{s.k}</dd>
                 <dd className="text-xs text-muted-foreground sm:text-sm">{s.v}</dd>
               </div>
             ))}
@@ -116,7 +116,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: lite ? 0.1 : 0.75, ease }}
             className="absolute right-4 top-4 hidden items-center gap-3 rounded-2xl bg-white/95 p-3 pr-4 shadow-lg backdrop-blur sm:flex"
           >
-            <span className="flex size-9 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+            <span className="flex size-9 items-center justify-center rounded-full bg-brand-green/10 text-brand-green">
               <Clock className="size-4" aria-hidden="true" />
             </span>
             <div>

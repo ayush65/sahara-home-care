@@ -75,12 +75,12 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <Reveal className="flex flex-col gap-6">
             <Link
               href="/services"
-              className="inline-flex w-fit items-center gap-2 text-sm font-medium text-muted-foreground hover:text-brand-blue"
+              className="inline-flex w-fit items-center gap-2 text-sm font-medium text-muted-foreground hover:text-brand-green"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
               All services
             </Link>
-            <span className="flex size-14 items-center justify-center rounded-2xl bg-brand-blue text-white">
+            <span className="flex size-14 items-center justify-center rounded-2xl bg-brand-green text-white">
               <Icon className="size-7" aria-hidden="true" />
             </span>
             <h1 className="text-balance font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
@@ -90,7 +90,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             <div className="flex flex-col gap-3 sm:flex-row">
               <a
                 href={site.phoneHref}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3.5 font-semibold text-white hover:bg-brand-blue-dark"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 font-semibold text-white hover:bg-brand-green-dark"
               >
                 <Phone className="size-4" aria-hidden="true" />
                 Call to book
@@ -135,7 +135,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             ))}
           </Stagger>
         </div>
-        <Reveal delay={0.1} className="h-fit rounded-3xl bg-brand-blue p-7 text-white">
+        <Reveal delay={0.1} className="h-fit rounded-3xl bg-brand-green p-7 text-white">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-brand-green-light">Ideal for</h2>
           <ul className="mt-5 flex flex-col gap-3">
             {service.idealFor.map((i) => (

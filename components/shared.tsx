@@ -45,7 +45,7 @@ export function SectionHeading({
 
 export function PageHero({ eyebrow, title, description }: { eyebrow: string; title: React.ReactNode; description: string }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-brand-blue via-brand-blue to-brand-blue-dark text-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-brand-green via-brand-green to-brand-green-dark text-white">
       <div
         className="pointer-events-none absolute -right-32 -top-32 size-[28rem] rounded-full bg-brand-green-light/25 blur-3xl"
         aria-hidden="true"
@@ -82,7 +82,7 @@ export function PageHero({ eyebrow, title, description }: { eyebrow: string; tit
 export function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-[0_20px_40px_-20px_rgba(22,119,184,0.35)]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-[0_20px_40px_-20px_rgba(18,165,42,0.35)]">
       <Link
         href={`/services/${service.slug}`}
         aria-label={service.title}
@@ -100,12 +100,12 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         </span>
       </Link>
       <div className="relative flex flex-1 flex-col gap-4 p-6 pt-0 sm:p-7 sm:pt-0">
-        <span className="-mt-6 flex size-12 items-center justify-center rounded-2xl border-4 border-white bg-brand-blue text-white shadow-sm transition-colors duration-300 group-hover:bg-brand-green">
+        <span className="-mt-6 flex size-12 items-center justify-center rounded-2xl border-4 border-white bg-brand-green text-white shadow-sm transition-colors duration-300 group-hover:bg-brand-green">
           <Icon className="size-5" aria-hidden="true" />
         </span>
         <div className="flex flex-1 flex-col gap-2">
           <h3 className="text-lg font-semibold leading-snug text-foreground">
-            <Link href={`/services/${service.slug}`} className="transition-colors hover:text-brand-blue">
+            <Link href={`/services/${service.slug}`} className="transition-colors hover:text-brand-green">
               {service.title}
             </Link>
           </h3>
@@ -124,7 +124,7 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         <div className="flex gap-2 border-t border-border pt-4">
           <a
             href={site.phoneHref}
-            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-brand-blue px-4 py-2.5 text-sm font-semibold text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
+            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-brand-green px-4 py-2.5 text-sm font-semibold text-brand-green transition-colors hover:bg-brand-green hover:text-white"
           >
             <Phone className="size-4" aria-hidden="true" />
             Call now
@@ -141,7 +141,7 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
 export function CtaBand() {
   return (
     <section className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-      <Reveal className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-brand-blue px-6 py-12 text-white sm:px-12 sm:py-16">
+      <Reveal className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-brand-green px-6 py-12 text-white sm:px-12 sm:py-16">
         <div
           className="pointer-events-none absolute -right-20 -top-24 size-80 rounded-full bg-brand-green-light/40 blur-3xl"
           aria-hidden="true"
@@ -159,7 +159,7 @@ export function CtaBand() {
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <a
               href={site.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-brand-blue transition-colors hover:bg-white/90"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-brand-green transition-colors hover:bg-white/90"
             >
               <Phone className="size-4" aria-hidden="true" />
               Call now

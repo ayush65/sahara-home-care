@@ -61,7 +61,7 @@ export default function ContactPage() {
             {channels.map((c) => {
               const content = (
                 <>
-                  <span className={`flex size-12 shrink-0 items-center justify-center rounded-2xl transition-colors ${'whatsapp' in c && c.whatsapp ? 'bg-[#25D366]/15 text-[#128C4B] group-hover:bg-[#25D366] group-hover:text-white' : 'bg-brand-blue/10 text-brand-blue group-hover:bg-brand-blue group-hover:text-white'}`}>
+                  <span className={`flex size-12 shrink-0 items-center justify-center rounded-2xl transition-colors ${'whatsapp' in c && c.whatsapp ? 'bg-[#25D366]/15 text-[#128C4B] group-hover:bg-[#25D366] group-hover:text-white' : 'bg-brand-green/10 text-brand-green group-hover:bg-brand-green group-hover:text-white'}`}>
                     <c.icon className="size-5" aria-hidden="true" />
                   </span>
                   <span className="flex flex-col">
@@ -77,7 +77,7 @@ export default function ContactPage() {
                       href={c.href}
                       target={c.href.startsWith('http') ? '_blank' : undefined}
                       rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="group flex items-center gap-4 rounded-3xl border border-border p-5 transition-colors hover:border-brand-blue/40"
+                      className="group flex items-center gap-4 rounded-3xl border border-border p-5 transition-colors hover:border-brand-green/40"
                     >
                       {content}
                     </a>
@@ -106,7 +106,7 @@ export default function ContactPage() {
                       aria-label={`Sahara Home Health Care on ${s.label}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex size-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
+                      className="inline-flex size-10 items-center justify-center rounded-full bg-brand-green/10 text-brand-green transition-colors hover:bg-brand-green hover:text-white"
                     >
                       <s.icon className="size-4" aria-hidden="true" />
                     </a>

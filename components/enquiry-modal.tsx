@@ -53,7 +53,7 @@ export function EnquiryModal() {
       role="dialog"
       aria-modal="true"
       aria-label="Enquiry form"
-      className="fixed inset-0 z-[80] flex items-end justify-center bg-brand-blue-dark/60 p-4 backdrop-blur-sm sm:items-center"
+      className="fixed inset-0 z-[80] flex items-end justify-center bg-brand-green-dark/60 p-4 backdrop-blur-sm sm:items-center"
       onClick={() => setOpen(false)}
     >
       <div
@@ -81,10 +81,10 @@ export function FloatingActions() {
         <a
           href={site.phoneHref}
           aria-label={`Call us at ${site.phone}`}
-          className="group relative inline-flex items-center justify-center rounded-full bg-brand-blue p-3.5 text-white shadow-[0_10px_30px_-8px_rgba(22,119,184,0.8)] transition-transform hover:scale-105"
+          className="group relative inline-flex items-center justify-center rounded-full bg-brand-green p-3.5 text-white shadow-[0_10px_30px_-8px_rgba(18,165,42,0.8)] transition-transform hover:scale-105"
         >
           <span
-            className="absolute inset-0 animate-ping rounded-full bg-brand-blue/40 [animation-duration:2.5s]"
+            className="absolute inset-0 animate-ping rounded-full bg-brand-green/40 [animation-duration:2.5s]"
             aria-hidden="true"
           />
           <Phone className="relative size-8" aria-hidden="true" />

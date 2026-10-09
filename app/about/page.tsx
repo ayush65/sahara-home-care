@@ -86,7 +86,7 @@ export default function AboutPage() {
           <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v) => (
               <StaggerItem key={v.title} className="flex flex-col gap-4 rounded-3xl bg-white p-7">
-                <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-blue text-white">
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-green text-white">
                   <v.icon className="size-6" aria-hidden="true" />
                 </span>
                 <h3 className="text-lg font-semibold">{v.title}</h3>

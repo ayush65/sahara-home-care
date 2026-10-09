@@ -6,9 +6,8 @@
   --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 
-  --color-brand-blue: var(--primary-blue);
-  --color-brand-blue-dark: var(--dark-blue);
   --color-brand-green: var(--primary-green);
+  --color-brand-green-dark: var(--dark-green);
   --color-brand-green-light: var(--light-green);
   --color-surface: var(--surface);
 
@@ -39,11 +38,11 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Brand palette — the original Sahara green (no blue anywhere). */
 :root {
-  --primary-blue: #1677b8;
-  --dark-blue: #10598a;
-  --primary-green: #12a15a;
-  --light-green: #4fc48a;
+  --primary-green: #12a52a;
+  --dark-green: #0a7a1c;
+  --light-green: #4dbd32;
   --text: #212529;
   --white: #ffffff;
   --surface: #f5f7fa;
@@ -54,18 +53,18 @@
   --card-foreground: var(--text);
   --popover: var(--white);
   --popover-foreground: var(--text);
-  --primary: var(--primary-blue);
+  --primary: var(--primary-green);
   --primary-foreground: var(--white);
   --secondary: var(--surface);
   --secondary-foreground: var(--text);
   --muted: var(--surface);
   --muted-foreground: #495057;
-  --accent: var(--primary-blue);
+  --accent: var(--primary-green);
   --accent-foreground: var(--white);
   --destructive: #dc2626;
   --border: #e4e9f0;
   --input: #dce3eb;
-  --ring: var(--primary-blue);
+  --ring: var(--primary-green);
   --radius: 0.875rem;
 }
 
@@ -107,15 +106,15 @@
     @apply bg-transparent;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-brand-blue-dark/40 rounded-full;
+    @apply bg-brand-green-dark/40 rounded-full;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-brand-blue-dark/60;
+    @apply bg-brand-green-dark/60;
   }
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-brand-blue-dark) transparent;
+    scrollbar-color: var(--color-brand-green-dark) transparent;
   }
 }
 

@@ -76,7 +76,7 @@ export function ServiceBannerCarousel({
       {/* Frame */}
       <div
         className={cn(
-          'relative overflow-hidden rounded-[1.5rem] bg-brand-blue-dark shadow-[0_30px_60px_-30px_rgba(22,119,184,0.45)] sm:rounded-[2rem]',
+          'relative overflow-hidden rounded-[1.5rem] bg-brand-green-dark shadow-[0_30px_60px_-30px_rgba(18,165,42,0.45)] sm:rounded-[2rem]',
           frameClassName ?? 'aspect-[4/3] sm:aspect-[16/9]',
         )}
       >
@@ -135,7 +135,7 @@ export function ServiceBannerCarousel({
                 aria-current={i === safeIndex}
                 className={cn(
                   'h-2 rounded-full transition-all duration-300',
-                  i === safeIndex ? 'w-8 bg-brand-blue' : 'w-2 bg-border hover:bg-brand-blue/40',
+                  i === safeIndex ? 'w-8 bg-brand-green' : 'w-2 bg-border hover:bg-brand-green/40',
                 )}
               />
             ))}
@@ -162,7 +162,7 @@ function BannerArrow({
       onClick={onClick}
       aria-label={label}
       className={cn(
-        'absolute top-1/2 z-10 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-brand-blue shadow-md backdrop-blur transition hover:bg-white hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue sm:size-11',
+        'absolute top-1/2 z-10 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-brand-green shadow-md backdrop-blur transition hover:bg-white hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green sm:size-11',
         side === 'left' ? 'left-2 sm:left-4' : 'right-2 sm:right-4',
       )}
     >
