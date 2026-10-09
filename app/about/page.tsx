@@ -42,7 +42,7 @@ export default function AboutPage() {
         eyebrow="About Sahara Home Health Care"
         title={
           <>
-            Bringing <span className="italic text-brand-green-light">trusted care</span> home.
+            Bringing <span className="text-brand-green-light">trusted care</span> home.
           </>
         }
         description="Sahara Home Health Care is a trusted home healthcare service dedicated to providing compassionate, professional and reliable care in the comfort of your home."

@@ -3,8 +3,8 @@
 @import 'shadcn/tailwind.css';
 
 @theme inline {
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 
   --color-brand-blue: var(--primary-blue);
   --color-brand-blue-dark: var(--dark-blue);
@@ -40,13 +40,13 @@
 }
 
 :root {
-  --primary-blue: #0757b9;
-  --dark-blue: #06439a;
-  --primary-green: #12a52a;
-  --light-green: #4dbd32;
-  --text: #111111;
+  --primary-blue: #1677b8;
+  --dark-blue: #10598a;
+  --primary-green: #12a15a;
+  --light-green: #4fc48a;
+  --text: #212529;
   --white: #ffffff;
-  --surface: #f5f8f6;
+  --surface: #f5f7fa;
 
   --background: var(--white);
   --foreground: var(--text);
@@ -59,12 +59,12 @@
   --secondary: var(--surface);
   --secondary-foreground: var(--text);
   --muted: var(--surface);
-  --muted-foreground: #4b5563;
-  --accent: var(--primary-green);
+  --muted-foreground: #495057;
+  --accent: var(--primary-blue);
   --accent-foreground: var(--white);
   --destructive: #dc2626;
-  --border: #e3eae6;
-  --input: #dbe3df;
+  --border: #e4e9f0;
+  --input: #dce3eb;
   --ring: var(--primary-blue);
   --radius: 0.875rem;
 }
@@ -78,6 +78,24 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    font-weight: 400;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-display {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  button,
+  [role='button'],
+  .btn {
+    font-family: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
   }
 
   /* Custom scrollbar – small, rounded, subtle */

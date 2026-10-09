@@ -82,7 +82,7 @@ export function PageHero({ eyebrow, title, description }: { eyebrow: string; tit
 export function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-[0_20px_40px_-20px_rgba(7,87,185,0.35)]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-[0_20px_40px_-20px_rgba(22,119,184,0.35)]">
       <Link
         href={`/services/${service.slug}`}
         aria-label={service.title}

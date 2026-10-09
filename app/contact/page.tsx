@@ -43,7 +43,7 @@ export default function ContactPage() {
         eyebrow="Contact us"
         title={
           <>
-            Let&apos;s talk about <span className="italic text-brand-green-light">the care you need.</span>
+            Let&apos;s talk about <span className="text-brand-green-light">the care you need.</span>
           </>
         }
         description="Reach out for a free consultation. Our care coordinators are available around the clock to answer your questions and arrange care quickly."

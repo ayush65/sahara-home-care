@@ -40,7 +40,7 @@ export default function ServicesPage() {
         eyebrow="Our home healthcare services"
         title={
           <>
-            Every kind of care, <span className="italic text-brand-green-light">at your doorstep.</span>
+            Every kind of care, <span className="text-brand-green-light">at your doorstep.</span>
           </>
         }
         description="From 24/7 nursing and caregivers to physiotherapy, doctor visits and critical care — explore the services that help your loved ones heal and thrive at home."

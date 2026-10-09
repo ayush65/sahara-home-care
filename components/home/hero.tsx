@@ -1,21 +1,25 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowRight, BadgeCheck, Clock, Phone, Star } from 'lucide-react'
 import { Eyebrow } from '@/components/shared'
 import { useLiteMotion } from '@/components/motion'
-import { site } from '@/lib/site'
+import { ServiceCarousel } from '@/components/home/service-carousel'
+import { services, site } from '@/lib/site'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
+const carouselSlides = services.map((s) => ({
+  id: s.slug,
+  title: s.title,
+  short: s.short,
+  image: s.image,
+  href: `/services/${s.slug}`,
+}))
+
 export function Hero() {
   const lite = useLiteMotion()
-  const ref = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', lite ? '0%' : '12%'])
 
   const fadeUp = (delay: number) => ({
     initial: { opacity: 0, y: lite ? 0 : 24 },
@@ -24,7 +28,7 @@ export function Hero() {
   })
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pt-12 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:pb-24">
         <div className="flex flex-col gap-6 lg:col-span-6">
           <motion.div {...fadeUp(0)}>
@@ -34,7 +38,7 @@ export function Hero() {
             {...fadeUp(0.08)}
             className="text-balance font-display text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
           >
-            Care that feels like <span className="italic text-brand-blue">family</span>,{' '}
+            Care that feels like <span className="text-brand-blue">family</span>,{' '}
             <span className="relative isolate inline-block">
               right at home.
               <span
@@ -53,7 +57,7 @@ export function Hero() {
           <motion.div {...fadeUp(0.24)} className="flex flex-col gap-3 sm:flex-row">
             <a
               href={site.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-7 py-4 font-semibold text-white shadow-[0_12px_30px_-12px_rgba(7,87,185,0.7)] transition-colors hover:bg-brand-blue-dark"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-7 py-4 font-semibold text-white shadow-[0_12px_30px_-12px_rgba(22,119,184,0.7)] transition-colors hover:bg-brand-blue-dark"
             >
               <Phone className="size-4" aria-hidden="true" />
               Book a free consultation
@@ -88,16 +92,7 @@ export function Hero() {
             transition={{ duration: lite ? 0.4 : 1, ease }}
             className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-surface sm:aspect-[5/4] lg:aspect-[4/5]"
           >
-            <motion.div style={{ y: imageY }} className="absolute inset-0 -bottom-[12%]">
-              <Image
-                src="/images/hero.png"
-                alt="A Sahara home nurse holding the hand of an elderly man in his living room"
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </motion.div>
+            <ServiceCarousel slides={carouselSlides} className="size-full" />
           </motion.div>
 
           <motion.div

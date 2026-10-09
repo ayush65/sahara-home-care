@@ -81,7 +81,7 @@ export function FloatingActions() {
         <a
           href={site.phoneHref}
           aria-label={`Call us at ${site.phone}`}
-          className="group relative inline-flex items-center justify-center rounded-full bg-brand-blue p-3.5 text-white shadow-[0_10px_30px_-8px_rgba(7,87,185,0.8)] transition-transform hover:scale-105"
+          className="group relative inline-flex items-center justify-center rounded-full bg-brand-blue p-3.5 text-white shadow-[0_10px_30px_-8px_rgba(22,119,184,0.8)] transition-transform hover:scale-105"
         >
           <span
             className="absolute inset-0 animate-ping rounded-full bg-brand-blue/40 [animation-duration:2.5s]"

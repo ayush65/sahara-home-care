@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Merriweather, Nunito_Sans } from 'next/font/google'
+import { Poppins, Roboto } from 'next/font/google'
 import { MotionProvider } from '@/components/motion'
 import { EnquiryModal, FloatingActions } from '@/components/enquiry-modal'
 import { LenisProvider } from '@/components/lenis-provider'
@@ -11,13 +11,18 @@ import { TopBar } from '@/components/top-bar'
 import { seo, siteConfig } from '@/lib/seo'
 import './globals.css'
 
-const jakarta = Nunito_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap' })
-const fraunces = Merriweather({
+const roboto = Roboto({
   subsets: ['latin'],
-  variable: '--font-fraunces',
+  variable: '--font-roboto',
   display: 'swap',
-  weight: ['400', '700', '900'],
-  style: ['normal', 'italic'],
+  weight: ['400', '500', '700'],
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  display: 'swap',
+  weight: ['500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -78,14 +83,14 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#0757B9',
+  themeColor: '#1677B8',
   width: 'device-width',
   initialScale: 1,
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${fraunces.variable} bg-white`}>
+    <html lang="en" className={`${roboto.variable} ${poppins.variable} bg-white`}>
       <body className="antialiased">
         <OrganizationSchema />
         <WebSiteSchema />

@@ -43,7 +43,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="flex flex-col gap-6 rounded-[2rem] border border-border bg-white p-6 shadow-[0_30px_60px_-30px_rgba(7,87,185,0.25)] sm:p-10"
+      className="flex flex-col gap-6 rounded-[2rem] border border-border bg-white p-6 shadow-[0_30px_60px_-30px_rgba(22,119,184,0.25)] sm:p-10"
     >
       <div className="flex flex-col gap-2">
         <h2 className="font-display text-2xl font-semibold sm:text-3xl">Request a free consultation</h2>
