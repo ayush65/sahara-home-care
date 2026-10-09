@@ -39,6 +39,38 @@ export const socials: { label: string; href: string; icon: ComponentType<{ class
 /** Used for schema.org `sameAs` so search engines trust the profiles. */
 export const socialProfiles = socials.map((s) => s.href)
 
+/**
+ * Ready-made 16:9 marketing creatives in /public/services, each mapped to the
+ * service page it promotes. The artwork already contains its own headline,
+ * service list and phone number — so the carousel adds no overlay text.
+ */
+export const promoBanners = [
+  {
+    id: 'caregiver-attendant',
+    title: 'Caretaker Services',
+    image: '/services/1.png',
+    href: '/services/caregiver-attendant',
+  },
+  {
+    id: 'baby-postnatal-care',
+    title: 'Baby & Postnatal Care',
+    image: '/services/2.png',
+    href: '/services/baby-postnatal-care',
+  },
+  {
+    id: 'physiotherapy',
+    title: 'Physiotherapy & Rehabilitation',
+    image: '/services/3.png',
+    href: '/services/physiotherapy',
+  },
+  {
+    id: 'palliative-long-term-care',
+    title: 'Palliative & Long-Term Care',
+    image: '/services/4.png',
+    href: '/services/palliative-long-term-care',
+  },
+]
+
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },

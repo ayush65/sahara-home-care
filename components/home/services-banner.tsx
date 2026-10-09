@@ -1,16 +1,8 @@
 import { ServiceBannerCarousel } from '@/components/home/service-banner-carousel'
 import { SectionHeading } from '@/components/shared'
-import { services } from '@/lib/site'
+import { promoBanners } from '@/lib/site'
 
-const bannerSlides = services.map((s) => ({
-  id: s.slug,
-  title: s.title,
-  short: s.short,
-  image: s.image,
-  href: `/services/${s.slug}`,
-}))
-
-/** Wide 16:9 auto-playing photo carousel of all services, placed above the services grid. */
+/** Wide 16:9 auto-playing carousel of the service creatives, placed above the services grid. */
 export function ServicesBanner() {
   return (
     <section aria-label="Service gallery" className="bg-surface">
@@ -18,13 +10,10 @@ export function ServicesBanner() {
         <SectionHeading
           eyebrow="Service gallery"
           title="A closer look at the care we provide."
-          description="Tap through every service we offer — each image links straight to its own page so you can see exactly what is included."
+          description="Flip through our service highlights — each one links straight to its own page so you can see exactly what is included."
           align="center"
         />
-        <ServiceBannerCarousel
-          slides={bannerSlides}
-          className="mt-12 aspect-[4/3] rounded-[2rem] shadow-xl sm:aspect-[16/9]"
-        />
+        <ServiceBannerCarousel slides={promoBanners} className="mt-12" />
       </div>
     </section>
   )
