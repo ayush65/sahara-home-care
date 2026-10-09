@@ -16,8 +16,6 @@ import type { ComponentType } from 'react'
 import {
   FacebookIcon,
   InstagramIcon,
-  LinkedInIcon,
-  XIcon,
   YouTubeIcon,
 } from '@/components/social-icons'
 
@@ -32,14 +30,14 @@ export const site = {
   hours: 'Available 24 hours, 7 days a week',
 }
 
-// Replace '#' with the real profile URLs when available.
 export const socials: { label: string; href: string; icon: ComponentType<{ className?: string }> }[] = [
-  { label: 'Facebook', href: '#', icon: FacebookIcon },
-  { label: 'Instagram', href: '#', icon: InstagramIcon },
-  { label: 'X (Twitter)', href: '#', icon: XIcon },
-  { label: 'YouTube', href: '#', icon: YouTubeIcon },
-  { label: 'LinkedIn', href: '#', icon: LinkedInIcon },
+  { label: 'Facebook', href: 'https://www.facebook.com/R.jinstititution01', icon: FacebookIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/saharahealthcareservice', icon: InstagramIcon },
+  { label: 'YouTube', href: 'https://www.youtube.com/@saharahomehealthcare', icon: YouTubeIcon },
 ]
+
+/** Used for schema.org `sameAs` so search engines trust the profiles. */
+export const socialProfiles = socials.map((s) => s.href)
 
 export const navLinks = [
   { href: '/', label: 'Home' },

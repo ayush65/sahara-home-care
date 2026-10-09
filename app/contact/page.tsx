@@ -6,7 +6,7 @@ import { BreadcrumbSchema } from '@/components/seo/JsonLd'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { PageHero } from '@/components/shared'
 import { siteConfig } from '@/lib/seo'
-import { site } from '@/lib/site'
+import { site, socials } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -91,6 +91,29 @@ export default function ContactPage() {
           <Reveal className="flex items-start gap-3 rounded-3xl bg-surface p-5 text-sm text-muted-foreground">
             <MapPin className="mt-0.5 size-4 shrink-0 text-brand-green" aria-hidden="true" />
             {site.address}
+          </Reveal>
+          <Reveal delay={0.15}>
+            <div className="rounded-3xl border border-border p-5">
+              <p className="text-sm font-semibold">Follow Sahara Home Health Care</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Care tips, recovery guides and family support — shared on our social channels.
+              </p>
+              <ul aria-label="Social media" className="mt-4 flex items-center gap-2">
+                {socials.map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      aria-label={`Sahara Home Health Care on ${s.label}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex size-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
+                    >
+                      <s.icon className="size-4" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
         </div>
 

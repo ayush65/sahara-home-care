@@ -12,7 +12,6 @@ export const siteConfig = {
   address: 'Serving families across the city & nearby areas',
   hours: 'Available 24 hours, 7 days a week',
   locale: 'en_IN',
-  twitter: '@saharahomecare',
 } as const
 
 export const seo = {

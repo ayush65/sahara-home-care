@@ -1,3 +1,4 @@
+import { socialProfiles } from '@/lib/site'
 import { siteConfig } from '@/lib/seo'
 
 export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
@@ -26,7 +27,7 @@ export function OrganizationSchema() {
           availableLanguage: ['English', 'Hindi'],
           hoursAvailable: 'Mo-Su 00:00-24:00',
         },
-        sameAs: [],
+        sameAs: socialProfiles,
       }}
     />
   )
