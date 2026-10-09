@@ -55,6 +55,13 @@ export function ServiceBannerCarousel({
     return () => document.removeEventListener('visibilitychange', onVisibility)
   }, [])
 
+  // Guard against the slide list shrinking (HMR, config change) while mounted.
+  const safeIndex = count > 0 ? Math.min(index, count - 1) : 0
+
+  useEffect(() => {
+    if (index > count - 1) setIndex(Math.max(0, count - 1))
+  }, [count, index])
+
   if (count === 0) return null
 
   return (
@@ -76,16 +83,16 @@ export function ServiceBannerCarousel({
         {slides.map((s, i) => (
           <div
             key={s.id}
-            aria-hidden={i !== index}
+            aria-hidden={i !== safeIndex}
             className={cn(
               'absolute inset-0 transition-opacity ease-out',
               reduceMotion ? 'duration-300' : 'duration-[900ms]',
-              i === index ? 'opacity-100' : 'pointer-events-none opacity-0',
+              i === safeIndex ? 'opacity-100' : 'pointer-events-none opacity-0',
             )}
           >
             <Link
               href={s.href}
-              tabIndex={i === index ? 0 : -1}
+              tabIndex={i === safeIndex ? 0 : -1}
               aria-label={`Learn more about ${s.title}`}
               className="absolute inset-0 block focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-white"
             >
@@ -104,8 +111,8 @@ export function ServiceBannerCarousel({
         {/* Arrows — kept small and tucked into the edges so the artwork stays readable */}
         {count > 1 && (
           <>
-            <BannerArrow side="left" onClick={() => go(index - 1)} label="Previous highlight" />
-            <BannerArrow side="right" onClick={() => go(index + 1)} label="Next highlight" />
+            <BannerArrow side="left" onClick={() => go(safeIndex - 1)} label="Previous highlight" />
+            <BannerArrow side="right" onClick={() => go(safeIndex + 1)} label="Next highlight" />
           </>
         )}
       </div>
@@ -114,7 +121,7 @@ export function ServiceBannerCarousel({
       {count > 1 && (
         <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
           <p className="text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">{slides[index].title}</span>
+            <span className="font-semibold text-foreground">{slides[safeIndex].title}</span>
             <span className="mx-2 text-border">|</span>
             Tap the image or use the arrows to explore
           </p>
@@ -125,10 +132,10 @@ export function ServiceBannerCarousel({
                 type="button"
                 onClick={() => go(i)}
                 aria-label={`Show ${s.title}`}
-                aria-current={i === index}
+                aria-current={i === safeIndex}
                 className={cn(
                   'h-2 rounded-full transition-all duration-300',
-                  i === index ? 'w-8 bg-brand-blue' : 'w-2 bg-border hover:bg-brand-blue/40',
+                  i === safeIndex ? 'w-8 bg-brand-blue' : 'w-2 bg-border hover:bg-brand-blue/40',
                 )}
               />
             ))}

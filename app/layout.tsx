@@ -90,7 +90,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${roboto.variable} ${poppins.variable} bg-white`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${roboto.variable} ${poppins.variable} bg-white`}
+    >
       <body className="antialiased">
         <OrganizationSchema />
         <WebSiteSchema />

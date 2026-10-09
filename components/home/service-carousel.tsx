@@ -50,6 +50,13 @@ export function ServiceCarousel({
     return () => document.removeEventListener('visibilitychange', onVisibility)
   }, [])
 
+  // Guard against the slide list shrinking (HMR, config change) while mounted.
+  const safeIndex = count > 0 ? Math.min(index, count - 1) : 0
+
+  useEffect(() => {
+    if (index > count - 1) setIndex(Math.max(0, count - 1))
+  }, [count, index])
+
   if (count === 0) return null
 
   return (
@@ -66,11 +73,11 @@ export function ServiceCarousel({
         {slides.map((s, i) => (
           <div
             key={s.id}
-            aria-hidden={i !== index}
+            aria-hidden={i !== safeIndex}
             className={cn(
               'absolute inset-0 transition-opacity ease-out',
               reduceMotion ? 'duration-300' : 'duration-[1200ms]',
-              i === index ? 'opacity-100' : 'pointer-events-none opacity-0',
+              i === safeIndex ? 'opacity-100' : 'pointer-events-none opacity-0',
             )}
           >
             <Image
@@ -83,7 +90,7 @@ export function ServiceCarousel({
               className={cn(
                 'object-cover transition-transform ease-out',
                 reduceMotion ? 'duration-0' : 'duration-[8000ms]',
-                i === index ? 'scale-105' : 'scale-100',
+                i === safeIndex ? 'scale-105' : 'scale-100',
               )}
             />
           </div>
@@ -95,11 +102,11 @@ export function ServiceCarousel({
         {slides.map((s, i) => (
           <div
             key={s.id}
-            aria-hidden={i !== index}
+            aria-hidden={i !== safeIndex}
             className={cn(
               'absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-blue-dark/90 via-brand-blue-dark/55 to-transparent p-6 transition-opacity ease-out sm:p-7',
               reduceMotion ? 'duration-300' : 'duration-700',
-              i === index ? 'opacity-100' : 'opacity-0',
+              i === safeIndex ? 'opacity-100' : 'opacity-0',
             )}
           >
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-green-light">
@@ -111,7 +118,7 @@ export function ServiceCarousel({
             <p className="mt-1 line-clamp-2 max-w-sm text-sm leading-relaxed text-white/80">{s.short}</p>
             <Link
               href={s.href}
-              tabIndex={i === index ? 0 : -1}
+              tabIndex={i === safeIndex ? 0 : -1}
               className="pointer-events-auto mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-white underline-offset-4 hover:underline"
             >
               Learn more
@@ -124,8 +131,8 @@ export function ServiceCarousel({
       {/* Arrows */}
       {count > 1 && (
         <>
-          <CarouselArrow side="left" onClick={() => go(index - 1)} label="Previous service" />
-          <CarouselArrow side="right" onClick={() => go(index + 1)} label="Next service" />
+          <CarouselArrow side="left" onClick={() => go(safeIndex - 1)} label="Previous service" />
+          <CarouselArrow side="right" onClick={() => go(safeIndex + 1)} label="Next service" />
         </>
       )}
 
@@ -138,10 +145,10 @@ export function ServiceCarousel({
               type="button"
               onClick={() => go(i)}
               aria-label={`Show ${s.title}`}
-              aria-current={i === index}
+              aria-current={i === safeIndex}
               className={cn(
                 'h-1.5 rounded-full bg-white transition-all duration-300',
-                i === index ? 'w-6' : 'w-1.5 opacity-50 hover:opacity-90',
+                i === safeIndex ? 'w-6' : 'w-1.5 opacity-50 hover:opacity-90',
               )}
             />
           ))}
