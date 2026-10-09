@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Stagger, StaggerItem, Reveal } from '@/components/motion'
 import { BreadcrumbSchema } from '@/components/seo/JsonLd'
+import { ServicesBanner } from '@/components/home/services-banner'
 import { CtaBand, PageHero, SectionHeading, ServiceCard } from '@/components/shared'
 import { siteConfig } from '@/lib/seo'
 import { services } from '@/lib/site'
@@ -51,6 +52,8 @@ export default function ServicesPage() {
           { name: 'Our Services', url: `${siteConfig.url}/services` },
         ]}
       />
+
+      <ServicesBanner />
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

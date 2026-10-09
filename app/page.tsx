@@ -9,6 +9,7 @@ import {
   WhyUs,
 } from '@/components/home/sections'
 import { CareShowcase } from '@/components/home/showcase'
+import { ServicesBanner } from '@/components/home/services-banner'
 import { Faq } from '@/components/home/faq'
 import { CtaBand } from '@/components/shared'
 import { siteConfig } from '@/lib/seo'
@@ -42,6 +43,7 @@ export default function HomePage() {
       <Hero />
       <HighlightsStrip />
       <AboutPreview />
+      <ServicesBanner />
       <ServicesPreview />
       <CareShowcase />
       <WhyUs />
