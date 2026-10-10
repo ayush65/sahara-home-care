@@ -40,9 +40,9 @@
 
 /* Brand palette — the original Sahara green (no blue anywhere). */
 :root {
-  --primary-green: #12a52a;
-  --dark-green: #0a7a1c;
-  --light-green: #4dbd32;
+  --primary-green: #0d9f08;
+  --dark-green: #0a7c06;
+  --light-green: #b9ffb0;
   --text: #212529;
   --white: #ffffff;
   --surface: #f5f7fa;
