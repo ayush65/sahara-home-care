@@ -36,7 +36,7 @@ export function Logo({
         height={573}
         priority
         sizes="(min-width: 1024px) 240px, 180px"
-        className={cn('w-auto', imgClassName ?? 'h-9 sm:h-11')}
+        className={cn('w-auto', imgClassName ?? 'h-11 sm:h-12 lg:h-14')}
       />
     </Link>
   )
