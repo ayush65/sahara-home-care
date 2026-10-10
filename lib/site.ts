@@ -22,10 +22,10 @@ import {
 export const site = {
   name: 'Sahara Home Health Care',
   tagline: 'Compassionate care, in the comfort of home.',
-  phone: '+91 98765 43210',
-  phoneHref: 'tel:+919876543210',
-  whatsapp: '919876543210',
-  email: 'care@saharahomecare.in',
+  phone: '+91 97381 53548',
+  phoneHref: 'tel:+919738153548',
+  whatsapp: '919738153548',
+  email: 'Saharahomehealthcareservice@gmail.com',
   address: 'Serving families across the city & nearby areas',
   hours: 'Available 24 hours, 7 days a week',
 }
