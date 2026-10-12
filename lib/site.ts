@@ -46,28 +46,28 @@ export const socialProfiles = socials.map((s) => s.href)
  */
 export const promoBanners = [
   {
-    id: 'caregiver-attendant',
+    id: 'caregiver-attendant-caretaker',
     title: 'Caretaker Services',
     image: '/services/1.png',
     href: '/services/caregiver-attendant',
   },
   {
-    id: 'baby-postnatal-care',
-    title: 'Baby & Postnatal Care',
+    id: 'caregiver-attendant',
+    title: '24/7 Caregiver & Patient Attendant',
     image: '/services/2.png',
-    href: '/services/baby-postnatal-care',
+    href: '/services/caregiver-attendant',
   },
   {
-    id: 'physiotherapy',
-    title: 'Physiotherapy & Rehabilitation',
+    id: 'elderly-care',
+    title: 'Elderly Care',
     image: '/services/3.png',
-    href: '/services/physiotherapy',
+    href: '/services/elderly-care',
   },
   {
-    id: 'palliative-long-term-care',
-    title: 'Palliative & Long-Term Care',
+    id: 'doctor-on-call',
+    title: 'Doctor-on-Call Services',
     image: '/services/4.png',
-    href: '/services/palliative-long-term-care',
+    href: '/services/doctor-on-call',
   },
 ]
 
