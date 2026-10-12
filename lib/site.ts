@@ -24,11 +24,32 @@ export const site = {
   tagline: 'Compassionate care, in the comfort of home.',
   phone: '+91 97381 53548',
   phoneHref: 'tel:+919738153548',
+  /** Secondary line — shown alongside the primary everywhere we list contact details. */
+  altPhone: '+91 79753 63425',
+  altPhoneHref: 'tel:+917975363425',
   whatsapp: '919738153548',
   email: 'Saharahomehealthcareservice@gmail.com',
-  address: 'Serving families across the city & nearby areas',
+  address: '8th Cross Road, Ganesh Block, Nandini Layout, Bengaluru, Karnataka 560096',
   hours: 'Available 24 hours, 7 days a week',
 }
+
+/** Clinic location — resolved from the shared Apple Maps place link. */
+export const location = {
+  name: 'Sahara Home Health Care',
+  address: '8th Cross Road, Ganesh Block, Nandini Layout, Bengaluru, Karnataka 560096',
+  lat: 13.0108,
+  lng: 77.5409,
+  appleMapsUrl: 'https://maps.apple/p/c7h.tdY-Q_dwDA',
+  get directionsUrl() {
+    return `https://www.google.com/maps/dir/?api=1&destination=${this.lat},${this.lng}`
+  },
+  get embedUrl() {
+    return `https://www.google.com/maps?q=${this.lat},${this.lng}&z=16&hl=en&output=embed`
+  },
+  get searchUrl() {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.address)}`
+  },
+} as const
 
 export const socials: { label: string; href: string; icon: ComponentType<{ className?: string }> }[] = [
   { label: 'Facebook', href: 'https://www.facebook.com/R.jinstititution01', icon: FacebookIcon },

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
-import { navLinks, services, site, socials } from '@/lib/site'
+import { navLinks, services, site, location, socials } from '@/lib/site'
 
 export function SiteFooter() {
   return (
@@ -64,6 +64,23 @@ export function SiteFooter() {
               <Phone className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
               <a href={site.phoneHref} className="hover:text-white">
                 {site.phone}
+              </a>
+            </li>
+            <li className="flex gap-3">
+              <Phone className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+              <a href={site.altPhoneHref} className="hover:text-white">
+                {site.altPhone}
+              </a>
+            </li>
+            <li className="flex gap-3">
+              <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+              <a
+                href={location.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
+                {site.address}
               </a>
             </li>
             <li className="flex gap-3">

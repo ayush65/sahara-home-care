@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { Clock, Mail, MapPin, Navigation, Phone } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { BreadcrumbSchema } from '@/components/seo/JsonLd'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
-import { PageHero } from '@/components/shared'
+import { PageHero, SectionHeading } from '@/components/shared'
 import { siteConfig } from '@/lib/seo'
-import { site, socials } from '@/lib/site'
+import { location, site, socials } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 
 const channels = [
   { icon: Phone, label: 'Call us', value: site.phone, href: site.phoneHref },
+  { icon: Phone, label: 'Alternate line', value: site.altPhone, href: site.altPhoneHref },
   { icon: WhatsAppIcon, label: 'WhatsApp', value: 'Chat with a coordinator', href: `https://wa.me/${site.whatsapp}`, whatsapp: true },
   { icon: Mail, label: 'Email', value: site.email, href: `mailto:${site.email}` },
   { icon: Clock, label: 'Hours', value: site.hours },
@@ -120,6 +121,54 @@ export default function ContactPage() {
         <Reveal delay={0.1} className="lg:col-span-3">
           <ContactForm />
         </Reveal>
+      </section>
+
+      <section aria-label="Find us" className="bg-surface">
+        <div className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8">
+          <SectionHeading
+            eyebrow="Find us"
+            title="Visit our location."
+            description="Come and meet the team, or drop in to discuss what care your loved one needs."
+            align="center"
+          />
+
+          <Reveal className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-white shadow-[0_30px_60px_-30px_rgba(18,165,42,0.25)]">
+            <iframe
+              src={location.embedUrl}
+              title={`Map showing ${location.name}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="h-[320px] w-full border-0 sm:h-[420px]"
+            />
+          </Reveal>
+
+          <Reveal delay={0.1} className="mt-6 flex flex-col items-center gap-4 text-center">
+            <p className="flex items-start gap-3 text-sm text-muted-foreground">
+              <MapPin className="mt-0.5 size-4 shrink-0 text-brand-green" aria-hidden="true" />
+              {location.address}
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a
+                href={location.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark"
+              >
+                <Navigation className="size-4" aria-hidden="true" />
+                Get directions
+              </a>
+              <a
+                href={location.appleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-sm font-semibold transition-colors hover:border-brand-green-dark hover:text-brand-green-dark"
+              >
+                <MapPin className="size-4" aria-hidden="true" />
+                Open in Apple Maps
+              </a>
+            </div>
+          </Reveal>
+        </div>
       </section>
     </>
   )

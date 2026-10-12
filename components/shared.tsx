@@ -124,7 +124,7 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         <div className="flex gap-2 border-t border-border pt-4">
           <a
             href={site.phoneHref}
-            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-brand-green px-4 py-2.5 text-sm font-semibold text-brand-green transition-colors hover:bg-brand-green hover:text-white"
+            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-brand-green px-4 py-2.5 text-sm font-semibold text-brand-green transition-colors hover:bg-brand-green-dark hover:text-white"
           >
             <Phone className="size-4" aria-hidden="true" />
             Call now

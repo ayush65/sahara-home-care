@@ -1,4 +1,4 @@
-import { socialProfiles } from '@/lib/site'
+import { location, socialProfiles } from '@/lib/site'
 import { siteConfig } from '@/lib/seo'
 
 export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
@@ -20,13 +20,39 @@ export function OrganizationSchema() {
         url: siteConfig.url,
         description: siteConfig.description,
         logo: `${siteConfig.url}/logo.png`,
-        contactPoint: {
-          '@type': 'ContactPoint',
-          telephone: siteConfig.phone,
-          contactType: 'customer service',
-          availableLanguage: ['English', 'Hindi'],
-          hoursAvailable: 'Mo-Su 00:00-24:00',
+        contactPoint: [
+          {
+            '@type': 'ContactPoint',
+            telephone: siteConfig.phone,
+            contactType: 'customer service',
+            areaServed: 'IN',
+            availableLanguage: ['English', 'Hindi', 'Kannada'],
+            hoursAvailable: 'Mo-Su 00:00-24:00',
+          },
+          {
+            '@type': 'ContactPoint',
+            telephone: siteConfig.altPhone,
+            contactType: 'customer service',
+            areaServed: 'IN',
+            availableLanguage: ['English', 'Hindi', 'Kannada'],
+            hoursAvailable: 'Mo-Su 00:00-24:00',
+          },
+        ],
+        email: siteConfig.email,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '8th Cross Road, Ganesh Block, Nandini Layout',
+          addressLocality: 'Bengaluru',
+          addressRegion: 'Karnataka',
+          postalCode: '560096',
+          addressCountry: 'IN',
         },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: location.lat,
+          longitude: location.lng,
+        },
+        hasMap: `https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`,
         sameAs: socialProfiles,
       }}
     />

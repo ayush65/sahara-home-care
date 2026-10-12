@@ -7,9 +7,11 @@ export const siteConfig = {
   ogImage: '/og-image.jpg',
   phone: '+91 97381 53548',
   phoneHref: 'tel:+919738153548',
+  altPhone: '+91 79753 63425',
+  altPhoneHref: 'tel:+917975363425',
   whatsapp: '919738153548',
   email: 'Saharahomehealthcareservice@gmail.com',
-  address: 'Serving families across the city & nearby areas',
+  address: '8th Cross Road, Ganesh Block, Nandini Layout, Bengaluru, Karnataka 560096',
   hours: 'Available 24 hours, 7 days a week',
   locale: 'en_IN',
 } as const
