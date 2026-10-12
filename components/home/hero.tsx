@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { ArrowRight, BadgeCheck, Clock, Phone, Star } from 'lucide-react'
 import { Eyebrow } from '@/components/shared'
 import { useLiteMotion } from '@/components/motion'
@@ -42,10 +42,10 @@ export function Hero() {
     <section className="relative overflow-hidden bg-white">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pt-12 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:pb-24">
         <div className="flex flex-col gap-6 lg:col-span-6">
-          <motion.div {...fade(0)}>
+          <m.div {...fade(0)}>
             <Eyebrow>Trusted Home Healthcare</Eyebrow>
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             {...rise(0.05)}
             className="text-balance font-display text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
           >
@@ -57,15 +57,15 @@ export function Hero() {
                 aria-hidden="true"
               />
             </span>
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             {...fade(0.14)}
             className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
           >
             Trained nurses, caregivers and attendants for elderly people, patients recovering from illness or
             surgery, and anyone who needs help with daily living — available 24/7.
-          </motion.p>
-          <motion.div {...fade(0.22)} className="flex flex-col gap-3 sm:flex-row">
+          </m.p>
+          <m.div {...fade(0.22)} className="flex flex-col gap-3 sm:flex-row">
             <a
               href={site.phoneHref}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-7 py-4 font-semibold text-white shadow-[0_12px_30px_-12px_rgba(18,165,42,0.7)] transition-colors hover:bg-brand-green-dark"
@@ -80,8 +80,8 @@ export function Hero() {
               Explore services
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
-          </motion.div>
-          <motion.dl {...fade(0.3)} className="mt-2 grid max-w-lg grid-cols-3 gap-4 border-t border-border pt-6">
+          </m.div>
+          <m.dl {...fade(0.3)} className="mt-2 grid max-w-lg grid-cols-3 gap-4 border-t border-border pt-6">
             {[
               { k: '24/7', v: 'Care available' },
               { k: '11+', v: 'Care services' },
@@ -92,20 +92,20 @@ export function Hero() {
                 <dd className="font-display text-2xl font-semibold text-brand-green sm:text-3xl">{s.k}</dd>
               </div>
             ))}
-          </motion.dl>
+          </m.dl>
         </div>
 
         <div className="relative lg:col-span-6">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: lite ? 1 : 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: lite ? 0.4 : 1, ease }}
             className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-surface sm:aspect-[5/4] lg:aspect-[4/5]"
           >
             <ServiceCarousel slides={carouselSlides} className="size-full" />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: lite ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: lite ? 0.1 : 0.6, ease }}
@@ -118,9 +118,9 @@ export function Hero() {
               <p className="text-sm font-semibold">Trained & verified</p>
               <p className="text-xs text-muted-foreground">Background-checked caregivers</p>
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: lite ? 0 : -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: lite ? 0.1 : 0.75, ease }}
@@ -137,7 +137,7 @@ export function Hero() {
               </div>
               <p className="text-xs font-medium">Round-the-clock support</p>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

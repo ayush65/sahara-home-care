@@ -1,6 +1,12 @@
 'use client'
 
-import { MotionConfig, motion, useReducedMotion, type HTMLMotionProps } from 'framer-motion'
+import {
+  LazyMotion,
+  MotionConfig,
+  m,
+  useReducedMotion,
+  type HTMLMotionProps,
+} from 'framer-motion'
 import { memo, useMemo, useSyncExternalStore, type ReactNode } from 'react'
 
 const MOBILE_QUERY = '(max-width: 767px)'
@@ -24,8 +30,30 @@ export function useLiteMotion() {
   return Boolean(reduced) || isMobile
 }
 
+/**
+ * `LazyMotion` + `domMax` instead of the default eager `motion` component.
+ *
+ * Importing `motion` pulls the entire Framer Motion bundle — including the
+ * gesture engine and every animation primitive — into every route. `m` is the
+ * lightweight factory that only references feature code, and `LazyMotion` loads
+ * `domMax` once, asynchronously, so it lands outside the critical render path.
+ *
+ * `domMax` (not `domAnimation`) because the nav pill uses `layoutId`, which
+ * needs layout animations. Dropping to `domAnimation` would be slightly smaller
+ * but would silently break that transition.
+ *
+ * Trade-off: because features load asynchronously, the very first frame of an
+ * animation is deferred by a tick. On this site that is imperceptible, and it is
+ * more than paid for by the smaller parse/execute cost on every route.
+ */
+const loadFeatures = () => import('@/components/motion-features').then((mod) => mod.default)
+
 export function MotionProvider({ children }: { children: ReactNode }) {
-  return <MotionConfig reducedMotion="user">{children}</MotionConfig>
+  return (
+    <LazyMotion features={loadFeatures} strict>
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
+    </LazyMotion>
+  )
 }
 
 type RevealProps = HTMLMotionProps<'div'> & {
@@ -55,7 +83,7 @@ export function Reveal({ delay = 0, y = 28, children, ...props }: RevealProps) {
   )
 
   return (
-    <motion.div
+    <m.div
       initial={initial}
       whileInView={whileInView}
       viewport={VIEWPORT}
@@ -63,7 +91,7 @@ export function Reveal({ delay = 0, y = 28, children, ...props }: RevealProps) {
       {...props}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -78,7 +106,7 @@ export function Stagger({ children, className }: { children: ReactNode; classNam
   )
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial="hidden"
       whileInView="show"
@@ -86,7 +114,7 @@ export function Stagger({ children, className }: { children: ReactNode; classNam
       variants={variants}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -115,8 +143,8 @@ export const StaggerItem = memo(function StaggerItem({
   )
 
   return (
-    <motion.div className={className} variants={variants}>
+    <m.div className={className} variants={variants}>
       {children}
-    </motion.div>
+    </m.div>
   )
 })

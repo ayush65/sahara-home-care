@@ -12,18 +12,27 @@ import { TopBar } from '@/components/top-bar'
 import { seo, siteConfig } from '@/lib/seo'
 import './globals.css'
 
+/**
+ * Font weights are trimmed to what the design system actually uses.
+ *
+ * Audited usage across every template: `font-semibold` (600), `font-medium`
+ * (500) and `font-normal` (400) — there is no `font-bold` anywhere, and the
+ * base layer pins headings to 600. Each unused weight is an extra render-
+ * blocking woff2 competing with the hero image for bandwidth, so shipping 700
+ * (and Poppins 500) cost real LCP for no visual gain.
+ */
 const roboto = Roboto({
   subsets: ['latin'],
   variable: '--font-roboto',
   display: 'swap',
-  weight: ['400', '500', '700'],
+  weight: ['400', '500'],
 })
 
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
   display: 'swap',
-  weight: ['500', '600', '700'],
+  weight: ['600'],
 })
 
 export const metadata: Metadata = {

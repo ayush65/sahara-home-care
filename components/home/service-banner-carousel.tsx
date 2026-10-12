@@ -55,12 +55,13 @@ export function ServiceBannerCarousel({
     return () => document.removeEventListener('visibilitychange', onVisibility)
   }, [])
 
-  // Guard against the slide list shrinking (HMR, config change) while mounted.
+  /**
+   * `safeIndex` alone is sufficient: every read of `index` goes through it, so a
+   * shrinking slide list can never index out of bounds. An effect that reset
+   * `index` was previously used for the same job, but it fired a second render
+   * purely to write back a value the render already handled correctly.
+   */
   const safeIndex = count > 0 ? Math.min(index, count - 1) : 0
-
-  useEffect(() => {
-    if (index > count - 1) setIndex(Math.max(0, count - 1))
-  }, [count, index])
 
   if (count === 0) return null
 

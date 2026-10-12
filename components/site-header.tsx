@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { Menu, Phone, X } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { ScrollLock } from '@/components/scroll-lock'
@@ -49,7 +49,7 @@ export function SiteHeader() {
                     )}
                   >
                     {isActive(link.href) && (
-                      <motion.span
+                      <m.span
                         layoutId="nav-pill"
                         className="absolute inset-0 -z-10 rounded-full bg-brand-green"
                         transition={{ type: 'spring', stiffness: 400, damping: 32 }}
@@ -86,7 +86,7 @@ export function SiteHeader() {
 
       <AnimatePresence>
         {open && (
-          <motion.nav
+          <m.nav
             id="mobile-nav"
             aria-label="Mobile"
             initial={{ opacity: 0 }}
@@ -119,7 +119,7 @@ export function SiteHeader() {
               <Phone className="size-4" aria-hidden="true" />
               Call {site.phone}
             </a>
-          </motion.nav>
+          </m.nav>
         )}
       </AnimatePresence>
     </>

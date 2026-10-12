@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, type FormEvent } from 'react'
+import { useState, useSyncExternalStore, type FormEvent } from 'react'
 import { CalendarCheck, Mail, Send } from 'lucide-react'
 import { services, site } from '@/lib/site'
 import { cn } from '@/lib/utils'
@@ -18,22 +18,26 @@ const SLOTS = [
 ]
 
 /**
- * Today in YYYY-MM-DD, computed only after mount.
+ * Today in YYYY-MM-DD, hydration-safe.
  *
  * Rendering `new Date()` during SSR and again on the client can disagree across
- * a date boundary or timezone, which produces a hydration mismatch on the
- * `min` attribute. Starting as `undefined` and setting it in an effect keeps the
- * first client render byte-identical to the server output.
+ * a date boundary or timezone, which produces a hydration mismatch on `min`.
+ *
+ * `useSyncExternalStore` is the right primitive here: React uses the *server*
+ * snapshot for the hydration render and the *client* snapshot afterwards, so
+ * the markup matches on first paint with no effect and no cascading render.
+ * (The previous `useState` + `useEffect` version was flagged by
+ * `react-hooks/set-state-in-effect` for exactly that reason.)
  */
+const noopSubscribe = () => () => {}
+
+function todayString() {
+  const d = new Date()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
 function useToday() {
-  const [today, setToday] = useState<string>('')
-  useEffect(() => {
-    const d = new Date()
-    setToday(
-      `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`,
-    )
-  }, [])
-  return today
+  return useSyncExternalStore(noopSubscribe, todayString, () => '')
 }
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'

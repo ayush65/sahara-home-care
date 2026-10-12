@@ -56,6 +56,11 @@ export function LenisProvider({ children }: { children: ReactNode }) {
     }
     instance.on('scroll', onScroll)
 
+    // Publishing an external instance into state is the documented "sync an
+    // external system during mount" case. It runs once, not per render, and
+    // React's own guidance covers it — so the blanket
+    // `react-hooks/set-state-in-effect` rule is a false positive here.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLenis(instance)
 
     return () => {
