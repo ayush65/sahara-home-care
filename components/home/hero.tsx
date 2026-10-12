@@ -21,21 +21,32 @@ const carouselSlides = services.map((s) => ({
 export function Hero() {
   const lite = useLiteMotion()
 
-  const fadeUp = (delay: number) => ({
-    initial: { opacity: 0, y: lite ? 0 : 24 },
+  /**
+   * The <h1> is the LCP element. Animating it from `opacity: 0` delays the
+   * paint that LCP measures, so it now animates `y` only. Everything below the
+   * fold of the fold keeps the fade, where it costs nothing.
+   */
+  const rise = (delay: number) => ({
+    initial: { y: lite ? 0 : 20 },
+    animate: { y: 0 },
+    transition: { duration: lite ? 0.3 : 0.7, delay: lite ? 0 : delay, ease },
+  })
+
+  const fade = (delay: number) => ({
+    initial: { opacity: 0, y: lite ? 0 : 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: lite ? 0.4 : 0.8, delay: lite ? 0 : delay, ease },
+    transition: { duration: lite ? 0.3 : 0.7, delay: lite ? 0 : delay, ease },
   })
 
   return (
     <section className="relative overflow-hidden bg-white">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pt-12 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:pb-24">
         <div className="flex flex-col gap-6 lg:col-span-6">
-          <motion.div {...fadeUp(0)}>
+          <motion.div {...fade(0)}>
             <Eyebrow>Trusted Home Healthcare</Eyebrow>
           </motion.div>
           <motion.h1
-            {...fadeUp(0.08)}
+            {...rise(0.05)}
             className="text-balance font-display text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
           >
             Care that feels like <span className="text-brand-green">family</span>,{' '}
@@ -48,13 +59,13 @@ export function Hero() {
             </span>
           </motion.h1>
           <motion.p
-            {...fadeUp(0.16)}
+            {...fade(0.14)}
             className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
           >
             Trained nurses, caregivers and attendants for elderly people, patients recovering from illness or
             surgery, and anyone who needs help with daily living — available 24/7.
           </motion.p>
-          <motion.div {...fadeUp(0.24)} className="flex flex-col gap-3 sm:flex-row">
+          <motion.div {...fade(0.22)} className="flex flex-col gap-3 sm:flex-row">
             <a
               href={site.phoneHref}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-7 py-4 font-semibold text-white shadow-[0_12px_30px_-12px_rgba(18,165,42,0.7)] transition-colors hover:bg-brand-green-dark"
@@ -70,16 +81,15 @@ export function Hero() {
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </motion.div>
-          <motion.dl {...fadeUp(0.32)} className="mt-2 grid max-w-lg grid-cols-3 gap-4 border-t border-border pt-6">
+          <motion.dl {...fade(0.3)} className="mt-2 grid max-w-lg grid-cols-3 gap-4 border-t border-border pt-6">
             {[
               { k: '24/7', v: 'Care available' },
               { k: '11+', v: 'Care services' },
               { k: '100%', v: 'Verified staff' },
             ].map((s) => (
               <div key={s.v} className="flex flex-col gap-1">
-                <dt className="sr-only">{s.v}</dt>
+                <dt className="text-xs text-muted-foreground sm:text-sm">{s.v}</dt>
                 <dd className="font-display text-2xl font-semibold text-brand-green sm:text-3xl">{s.k}</dd>
-                <dd className="text-xs text-muted-foreground sm:text-sm">{s.v}</dd>
               </div>
             ))}
           </motion.dl>

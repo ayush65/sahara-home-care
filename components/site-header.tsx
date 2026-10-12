@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, Phone, X } from 'lucide-react'
 import { Logo } from '@/components/logo'
+import { ScrollLock } from '@/components/scroll-lock'
 import { navLinks, site } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -21,17 +22,11 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [open])
-
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
 
   return (
     <>
+      <ScrollLock active={open} />
       <header
         className={cn(
           'sticky top-0 z-50 transition-[background-color,box-shadow] duration-300',

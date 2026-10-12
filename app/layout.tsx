@@ -32,11 +32,13 @@ export const metadata: Metadata = {
     template: seo.titleTemplate,
   },
   description: seo.defaultDescription,
-  keywords: seo.keywords,
+  // Spread: `seo` is `as const`, so the tuple is readonly and Metadata expects
+  // a mutable string[]. This error was invisible because the build had
+  // `typescript.ignoreBuildErrors` enabled.
+  keywords: [...seo.keywords],
   applicationName: siteConfig.name,
-  alternates: {
-    canonical: '/',
-  },
+  // No `alternates.canonical` here on purpose: it would apply to every route and
+  // canonicalise pages other than `/` back to the homepage. Each page sets its own.
   openGraph: {
     type: 'website',
     locale: siteConfig.locale,
@@ -96,13 +98,22 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${roboto.variable} ${poppins.variable} bg-white`}
     >
       <body className="antialiased">
+        {/* WCAG 2.4.1 Bypass Blocks — the header alone is ~10 links deep before <main>. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:inline-flex focus:h-auto focus:w-auto focus:rounded-full focus:bg-brand-green-dark focus:px-5 focus:py-3 focus:text-sm focus:font-medium focus:text-white focus:[clip:auto]"
+        >
+          Skip to main content
+        </a>
         <OrganizationSchema />
         <WebSiteSchema />
         <MotionProvider>
           <LenisProvider>
             <TopBar />
             <SiteHeader />
-            <main>{children}</main>
+            <main id="main" tabIndex={-1} className="focus:outline-none">
+          {children}
+        </main>
             <SiteFooter />
             <FloatingActions />
             <EnquiryModal />

@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react'
 import { SectionHeading } from '@/components/shared'
+import { FaqSchema } from '@/components/seo/JsonLd'
 
 const faqs = [
   {
@@ -31,6 +32,8 @@ const faqs = [
 export function Faq() {
   return (
     <section className="bg-surface">
+      {/* Lets search engines surface these as expandable results. */}
+      <FaqSchema items={faqs} />
       <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <SectionHeading
           eyebrow="FAQ"

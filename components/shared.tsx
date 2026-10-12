@@ -81,13 +81,15 @@ export function PageHero({ eyebrow, title, description }: { eyebrow: string; tit
 
 export function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon
+  const href = `/services/${service.slug}`
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-[0_20px_40px_-20px_rgba(18,165,42,0.35)]">
-      <Link
-        href={`/services/${service.slug}`}
-        aria-label={service.title}
-        className="relative block aspect-[16/10] overflow-hidden bg-surface"
-      >
+      {/*
+        One link per card, stretched over it. The heading link is the tab stop;
+        the image and the "Learn more" affordance are decorative duplicates that
+        would otherwise add two redundant tab stops per card (66 on /services).
+      */}
+      <div className="relative block aspect-[16/10] overflow-hidden bg-surface">
         <Image
           src={service.image || '/placeholder.svg'}
           alt=""
@@ -98,30 +100,41 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 font-display text-xs font-semibold text-foreground backdrop-blur">
           {String(index + 1).padStart(2, '0')}
         </span>
-      </Link>
+      </div>
       <div className="relative flex flex-1 flex-col gap-4 p-6 pt-0 sm:p-7 sm:pt-0">
         <span className="-mt-6 flex size-12 items-center justify-center rounded-2xl border-4 border-white bg-brand-green text-white shadow-sm transition-colors duration-300 group-hover:bg-brand-green-dark">
           <Icon className="size-5" aria-hidden="true" />
         </span>
         <div className="flex flex-1 flex-col gap-2">
           <h3 className="text-lg font-semibold leading-snug text-foreground">
-            <Link href={`/services/${service.slug}`} className="transition-colors hover:text-brand-green-dark">
+            {/*
+              Stretched-link pattern: the heading is the single tab stop for the
+              whole card. Previously the image, the heading and "Learn more" were
+              three separate links to the same URL — 33 redundant tab stops on
+              /services, and screen readers announced "link" three times per card.
+              `relative z-10` on the action row lifts those controls back above
+              the stretched overlay so they stay clickable.
+            */}
+            <Link
+              href={href}
+              className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-brand-green-dark"
+            >
               {service.title}
             </Link>
           </h3>
           <p className="text-sm leading-relaxed text-muted-foreground">{service.short}</p>
         </div>
-        <Link
-          href={`/services/${service.slug}`}
-          className="inline-flex items-center gap-1 text-sm font-semibold text-brand-green"
+        <p
+          aria-hidden="true"
+          className="pointer-events-none inline-flex items-center gap-1 text-sm font-semibold text-brand-green transition-colors group-hover:text-brand-green-dark"
         >
           Learn more
           <ArrowUpRight
             className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             aria-hidden="true"
           />
-        </Link>
-        <div className="flex gap-2 border-t border-border pt-4">
+        </p>
+        <div className="relative z-10 flex gap-2 border-t border-border pt-4">
           <a
             href={site.phoneHref}
             className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-brand-green px-4 py-2.5 text-sm font-semibold text-brand-green transition-colors hover:bg-brand-green-dark hover:text-white"

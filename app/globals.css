@@ -71,9 +71,17 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    /* Firefox scrollbar. Scoped to the scroll roots rather than `*` — putting
+       `scrollbar-width` on every element forces a custom scrollbar onto all
+       scroll containers and opts them out of overlay scrollbars. */
+    scrollbar-width: thin;
+    scrollbar-color: var(--dark-green) transparent;
   }
   html {
     scroll-behavior: smooth;
+    /* The header is sticky (80px mobile / 96px from sm). Without this, any
+       in-page anchor or `scrollIntoView` lands underneath it. */
+    scroll-padding-top: 5rem;
   }
   body {
     @apply bg-background text-foreground font-sans;
@@ -97,6 +105,15 @@
     font-weight: 500;
   }
 
+  /* A visible focus ring everywhere. Tailwind preflight removes the UA outline
+     colour but leaves `outline-style` to the UA, which is too subtle on the
+     white surfaces used across the site. */
+  :focus-visible {
+    outline: 2px solid var(--dark-green);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
   /* Custom scrollbar – small, rounded, subtle */
   ::-webkit-scrollbar {
     width: 8px;
@@ -111,16 +128,29 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-brand-green-dark/60;
   }
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-brand-green-dark) transparent;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 6rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  /* Global safety net: stop every decorative looping animation. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animate-marquee,
+  .animate-ping {
+    animation: none !important;
   }
 }
 
@@ -139,10 +169,4 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation: none;
-  }
 }

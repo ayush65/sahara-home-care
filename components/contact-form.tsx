@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { CalendarCheck, Mail, Send } from 'lucide-react'
 import { services, site } from '@/lib/site'
 
@@ -16,10 +16,23 @@ const SLOTS = [
   { value: 'night', label: 'Night · 8pm – 12am' },
 ]
 
-/** Today in YYYY-MM-DD, used as the minimum selectable appointment date. */
-function today() {
-  const d = new Date()
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+/**
+ * Today in YYYY-MM-DD, computed only after mount.
+ *
+ * Rendering `new Date()` during SSR and again on the client can disagree across
+ * a date boundary or timezone, which produces a hydration mismatch on the
+ * `min` attribute. Starting as `undefined` and setting it in an effect keeps the
+ * first client render byte-identical to the server output.
+ */
+function useToday() {
+  const [today, setToday] = useState<string>('')
+  useEffect(() => {
+    const d = new Date()
+    setToday(
+      `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`,
+    )
+  }, [])
+  return today
 }
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
@@ -27,6 +40,7 @@ type Status = 'idle' | 'sending' | 'sent' | 'error'
 export function ContactForm() {
   const [status, setStatus] = useState<Status>('idle')
   const [message, setMessage] = useState<string | null>(null)
+  const minDate = useToday()
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -161,7 +175,7 @@ export function ContactForm() {
               id="enquiry-date"
               name="appointmentDate"
               type="date"
-              min={today()}
+              min={minDate || undefined}
               className={inputClass}
             />
           </label>

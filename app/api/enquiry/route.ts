@@ -36,6 +36,44 @@ function escapeHtml(s: string) {
     .replace(/"/g, '&quot;')
 }
 
+/**
+ * Tiny in-memory throttle. Without this the endpoint is an open relay that
+ * anyone can spam through, burning the SMTP quota and getting the domain
+ * rate-limited or blacklisted by the mail provider.
+ *
+ * Per-instance only, so it is a speed bump rather than a hard guarantee — good
+ * enough to defeat casual abuse, and it keeps the route free of extra
+ * dependencies. Use a KV/Redis limiter if abuse becomes a real problem.
+ */
+const WINDOW_MS = 10 * 60 * 1000
+const MAX_PER_WINDOW = 5
+const hits = new Map<string, number[]>()
+
+function throttled(key: string) {
+  const now = Date.now()
+  const recent = (hits.get(key) ?? []).filter((t) => now - t < WINDOW_MS)
+  if (recent.length >= MAX_PER_WINDOW) {
+    hits.set(key, recent)
+    return true
+  }
+  recent.push(now)
+  hits.set(key, recent)
+
+  // Opportunistic cleanup so the map cannot grow without bound.
+  if (hits.size > 5000) {
+    for (const [k, v] of hits) {
+      if (v.every((t) => now - t >= WINDOW_MS)) hits.delete(k)
+    }
+  }
+  return false
+}
+
+function clientKey(request: Request) {
+  const fwd = request.headers.get('x-forwarded-for')
+  const ip = fwd ? fwd.split(',')[0]?.trim() : request.headers.get('x-real-ip')
+  return ip || 'unknown'
+}
+
 /** Rejects anything that isn't a plain YYYY-MM-DD date that isn't in the past. */
 function validDate(value: string) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null
@@ -48,6 +86,13 @@ function validDate(value: string) {
 }
 
 export async function POST(request: Request) {
+  if (throttled(clientKey(request))) {
+    return NextResponse.json(
+      { ok: false, error: 'Too many enquiries from this connection. Please try again shortly.' },
+      { status: 429, headers: { 'Retry-After': '600' } },
+    )
+  }
+
   let body: Enquiry
   try {
     body = await request.json()
