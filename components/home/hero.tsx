@@ -100,7 +100,10 @@ export function Hero() {
             initial={{ opacity: 0, scale: lite ? 1 : 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: lite ? 0.4 : 1, ease }}
-            className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-surface sm:aspect-[5/4] lg:aspect-[4/5]"
+            // The source photography is landscape (1408x768). The old 4/5 / 5/4 frames
+            // discarded 32-56% of the width; these keep the framing tight without
+            // slicing the image in half.
+            className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-surface sm:aspect-[16/10]"
           >
             <ServiceCarousel slides={carouselSlides} className="size-full" />
           </m.div>

@@ -28,7 +28,7 @@ export function CareShowcase() {
               key={s.slug}
               className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
             >
-              <Reveal className={cn('relative aspect-[4/3] overflow-hidden rounded-[2rem]', flip && 'lg:order-2')}>
+              <Reveal className={cn('relative aspect-[16/10] overflow-hidden rounded-[2rem]', flip && 'lg:order-2')}>
                 <Image
                   src={s.image}
                   alt={`${s.title} by Sahara Home Health Care`}

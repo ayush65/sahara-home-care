@@ -29,6 +29,8 @@ export const metadata: Metadata = {
 }
 
 const featured = [
+  // 16/10 frames, not 3/4: the source photography is landscape (1408x768), so a
+  // portrait frame discarded 59% of the width on every card.
   { image: '/images/physio.png', title: 'Physiotherapy at home', alt: 'Physiotherapist helping a patient exercise at home' },
   { image: '/images/postnatal.png', title: 'Baby & postnatal care', alt: 'Caregiver helping a new mother with her baby' },
   { image: '/images/critical.png', title: 'Critical care at home', alt: 'Nurse monitoring a patient in a home ICU setup' },
@@ -62,7 +64,7 @@ export default function ServicesPage() {
           <SectionHeading eyebrow="Specialised care" title="Expert support for complex needs." />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {featured.map((f, i) => (
-              <Reveal key={f.title} delay={i * 0.08} className="group relative aspect-[3/4] overflow-hidden rounded-3xl">
+              <Reveal key={f.title} delay={i * 0.08} className="group relative aspect-[16/10] overflow-hidden rounded-3xl">
                 <Image
                   src={f.image}
                   alt={f.alt}

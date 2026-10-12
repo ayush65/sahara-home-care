@@ -89,7 +89,7 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         the image and the "Learn more" affordance are decorative duplicates that
         would otherwise add two redundant tab stops per card (66 on /services).
       */}
-      <div className="relative block aspect-[16/10] overflow-hidden bg-surface">
+      <div className="relative block aspect-[16/9] overflow-hidden bg-surface">
         <Image
           src={service.image || '/placeholder.svg'}
           alt=""

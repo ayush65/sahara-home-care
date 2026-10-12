@@ -23,6 +23,17 @@ const AUTOPLAY_MS = 5000
  * contact details, so this carousel deliberately renders **no** overlay text —
  * only arrows, dots and a full-slide link to the matching service section.
  */
+/**
+ * Exact source ratio of the creatives in /public/services (1376 x 768).
+ *
+ * Using `aspect-[16/9]` (1.778) against a 1.792 source still crops ~1% of the
+ * width, and a portrait mobile frame cropped ~26% — which sliced off the
+ * headline on the left and the phone/email panel on the right, both of which
+ * are baked into the artwork. Matching the source exactly means `object-cover`
+ * never actually crops.
+ */
+const SOURCE_RATIO = 'aspect-[1376/768]'
+
 export function ServiceBannerCarousel({
   slides,
   className,
@@ -78,7 +89,7 @@ export function ServiceBannerCarousel({
       <div
         className={cn(
           'relative overflow-hidden rounded-[1.5rem] bg-brand-green-dark shadow-[0_30px_60px_-30px_rgba(18,165,42,0.45)] sm:rounded-[2rem]',
-          frameClassName ?? 'aspect-[4/3] sm:aspect-[16/9]',
+          frameClassName ?? SOURCE_RATIO,
         )}
       >
         {slides.map((s, i) => (
