@@ -125,50 +125,75 @@ export function EnquiryPopup() {
         >
           <div
             ref={panelRef}
-            className="relative max-h-[92vh] w-full max-w-xl overflow-y-auto rounded-[2rem] bg-white shadow-2xl"
+            className="flex max-h-[92dvh] w-full max-w-xl flex-col overflow-hidden rounded-[2rem] bg-white shadow-2xl"
           >
             <button
               type="button"
               onClick={close}
               aria-label="Close enquiry form"
-              className="absolute right-4 top-4 z-10 inline-flex size-10 items-center justify-center rounded-full bg-surface text-foreground transition-colors hover:bg-border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
+              className="absolute right-4 top-4 z-10 inline-flex size-10 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <X className="size-5" aria-hidden="true" />
             </button>
 
-            <div className="flex items-start gap-3 rounded-t-[2rem] bg-brand-green px-6 py-6 text-white">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white/15">
-                <CalendarCheck className="size-6" aria-hidden="true" />
-              </span>
-              <div>
-                <h2 className="font-display text-xl font-semibold">Book a free consultation</h2>
-                <p className="mt-1 text-sm text-white/85">
-                  Pick a date and time that suits you — our coordinator will call to confirm.
-                </p>
+            {/*
+              Fixed banner + scrollable body + fixed footer.
+
+              The whole panel used to be one scroll container, which meant the
+              call/WhatsApp escape hatches scrolled out of reach — the visitor had
+              to scroll to the bottom of a long form to find another way to reach
+              us. `shrink-0` pins both ends.
+            */}
+            <div className="shrink-0">
+              <div className="flex items-start gap-3 bg-brand-green px-6 py-6 text-white">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white/15">
+                  <CalendarCheck className="size-6" aria-hidden="true" />
+                </span>
+                <div>
+                  <h2 className="font-display text-xl font-semibold">Book a free consultation</h2>
+                  <p className="mt-1 text-sm text-white/85">
+                    Pick a date and time that suits you — our coordinator will call to confirm.
+                  </p>
+                </div>
               </div>
             </div>
 
-            <ContactForm showHeading={false} className="sm:p-8" />
+            {/*
+              `data-lenis-prevent` is essential. Lenis' wheel listener sits on
+              the window and calls preventDefault() on every wheel event.
+              `lenis.stop()` halts its animation but NOT that listener, so without
+              this attribute the form is physically unscrollable for the user —
+              it can only be scrolled programmatically.
+              `overscroll-contain` stops the scroll chaining to the page behind.
+            */}
+            <div
+              data-lenis-prevent
+              className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
+            >
+              <ContactForm showHeading={false} className="sm:p-8" />
+            </div>
 
-            <div className="flex flex-col gap-2 border-t border-border px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-10">
-              <p className="text-xs text-muted-foreground">Prefer to talk now?</p>
-              <div className="flex gap-2">
-                <a
-                  href={site.phoneHref}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-brand-green-dark hover:text-brand-green-dark"
-                >
-                  <Phone className="size-4" aria-hidden="true" />
-                  Call
-                </a>
-                <a
-                  href={`https://wa.me/${site.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-brand-green-dark hover:text-brand-green-dark"
-                >
-                  <WhatsAppIcon className="size-4" />
-                  WhatsApp
-                </a>
+            <div className="shrink-0 border-t border-border px-6 py-4 sm:px-8">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs text-muted-foreground">Prefer to talk now?</p>
+                <div className="flex gap-2">
+                  <a
+                    href={site.phoneHref}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-brand-green-dark hover:text-brand-green-dark"
+                  >
+                    <Phone className="size-4" aria-hidden="true" />
+                    Call
+                  </a>
+                  <a
+                    href={`https://wa.me/${site.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-brand-green-dark hover:text-brand-green-dark"
+                  >
+                    <WhatsAppIcon className="size-4" />
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>

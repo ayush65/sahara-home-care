@@ -106,7 +106,7 @@ export function EnquiryModal() {
         >
           <div
             ref={panelRef}
-            className="relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-[2rem]"
+            className="relative max-h-[92dvh] w-full max-w-xl overflow-hidden rounded-[2rem]"
           >
             <button
               type="button"
@@ -116,7 +116,14 @@ export function EnquiryModal() {
             >
               <X className="size-5" aria-hidden="true" />
             </button>
-            <ContactForm />
+            {/*
+              Same Lenis trap as the popup: its window-level wheel handler
+              preventDefaults every wheel event, and `lenis.stop()` does not
+              release it. `data-lenis-prevent` hands scrolling back to the DOM.
+            */}
+            <div data-lenis-prevent className="max-h-[92dvh] overflow-y-auto overscroll-contain">
+              <ContactForm />
+            </div>
           </div>
         </div>
       )}
