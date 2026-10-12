@@ -10,7 +10,7 @@ import { services } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Our Services',
   description:
-    'Home nursing, caregivers, elderly care, doctor-on-call, physiotherapy, baby & postnatal care, medical equipment, palliative, dementia and critical care at home.',
+    'Professional nursing care, nursing assistant/care giver, elderly care, doctor-on-call, physiotherapy, baby & postnatal care, medical equipment, palliative, dementia and critical care at home.',
   alternates: {
     canonical: '/services',
   },

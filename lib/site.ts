@@ -74,7 +74,7 @@ export const promoBanners = [
   },
   {
     id: 'caregiver-attendant',
-    title: '24/7 Caregiver & Patient Attendant',
+    title: 'Nursing assistant/care giver',
     image: '/services/2.png',
     href: '/services/caregiver-attendant',
   },
@@ -113,7 +113,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: 'home-nursing',
-    title: '24/7 Professional Home Nursing',
+    title: 'Professional nursing care',
     short: 'Qualified nurses for clinical care at home, round the clock.',
     description:
       'Our registered and trained nurses bring hospital-grade clinical care into your home — from wound dressing and injections to IV management and vital monitoring — so your loved one recovers where they feel safest.',
@@ -130,7 +130,7 @@ export const services: Service[] = [
   },
   {
     slug: 'caregiver-attendant',
-    title: '24/7 Caregiver & Patient Attendant',
+    title: 'Nursing assistant/care giver',
     short: 'Trained attendants for daily living, mobility and companionship.',
     description:
       'Our caregivers help with everyday needs — bathing, feeding, mobility, toileting and companionship — with patience, dignity and respect. Available for day, night, 24-hour and live-in shifts.',
@@ -301,8 +301,8 @@ export const services: Service[] = [
 ]
 
 export const careHighlights = [
-  '24/7 Professional Home Nursing',
-  '24/7 Caregiver & Patient Attendant',
+  'Professional nursing care',
+  'Nursing assistant/care giver',
   'Elderly Care',
   'Post-Hospitalization Care',
   '24/7 & Live-in Care',
