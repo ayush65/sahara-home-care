@@ -67,10 +67,10 @@ export const socialProfiles = socials.map((s) => s.href)
  */
 export const promoBanners = [
   {
-    id: 'caregiver-attendant-caretaker',
-    title: 'Caretaker Services',
+    id: 'home-nursing',
+    title: 'Professional nursing care',
     image: '/services/1.png',
-    href: '/services/caregiver-attendant',
+    href: '/services/home-nursing',
   },
   {
     id: 'caregiver-attendant',
@@ -89,6 +89,18 @@ export const promoBanners = [
     title: 'Doctor-on-Call Services',
     image: '/services/4.png',
     href: '/services/doctor-on-call',
+  },
+  {
+    id: 'physiotherapy',
+    title: 'Physiotherapy & Rehabilitation',
+    image: '/services/5.png',
+    href: '/services/physiotherapy',
+  },
+  {
+    id: 'baby-postnatal-care',
+    title: 'Baby & Postnatal Care',
+    image: '/services/6.png',
+    href: '/services/baby-postnatal-care',
   },
 ]
 
