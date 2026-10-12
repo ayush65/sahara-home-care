@@ -301,8 +301,8 @@ export const services: Service[] = [
 ]
 
 export const careHighlights = [
-  'Nursing Care',
-  'Patient Attendants & Caregivers',
+  '24/7 Professional Home Nursing',
+  '24/7 Caregiver & Patient Attendant',
   'Elderly Care',
   'Post-Hospitalization Care',
   '24/7 & Live-in Care',
