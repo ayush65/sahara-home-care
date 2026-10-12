@@ -100,12 +100,12 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         </span>
       </Link>
       <div className="relative flex flex-1 flex-col gap-4 p-6 pt-0 sm:p-7 sm:pt-0">
-        <span className="-mt-6 flex size-12 items-center justify-center rounded-2xl border-4 border-white bg-brand-green text-white shadow-sm transition-colors duration-300 group-hover:bg-brand-green">
+        <span className="-mt-6 flex size-12 items-center justify-center rounded-2xl border-4 border-white bg-brand-green text-white shadow-sm transition-colors duration-300 group-hover:bg-brand-green-dark">
           <Icon className="size-5" aria-hidden="true" />
         </span>
         <div className="flex flex-1 flex-col gap-2">
           <h3 className="text-lg font-semibold leading-snug text-foreground">
-            <Link href={`/services/${service.slug}`} className="transition-colors hover:text-brand-green">
+            <Link href={`/services/${service.slug}`} className="transition-colors hover:text-brand-green-dark">
               {service.title}
             </Link>
           </h3>
@@ -129,7 +129,7 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
             <Phone className="size-4" aria-hidden="true" />
             Call now
           </a>
-          <EnquireButton className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-brand-green px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-light">
+          <EnquireButton className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-brand-green px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark">
             Enquire now
           </EnquireButton>
         </div>
@@ -168,7 +168,7 @@ export function CtaBand() {
               href={`https://wa.me/${site.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 font-semibold text-white transition-colors hover:bg-brand-green-light"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 font-semibold text-white transition-colors hover:bg-brand-green-dark"
             >
               <WhatsAppIcon className="size-4" />
               WhatsApp us

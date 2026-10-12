@@ -50,7 +50,7 @@ export function SiteHeader() {
                     aria-current={isActive(link.href) ? 'page' : undefined}
                     className={cn(
                       'relative z-10 block rounded-full px-4 py-2 text-sm font-medium transition-colors',
-                      isActive(link.href) ? 'text-white' : 'text-foreground/75 hover:text-brand-green',
+                      isActive(link.href) ? 'text-white' : 'text-foreground/75 hover:text-brand-green-dark',
                     )}
                   >
                     {isActive(link.href) && (
@@ -70,7 +70,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <a
               href={site.phoneHref}
-              className="hidden items-center gap-2 rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green/90 lg:inline-flex"
+              className="hidden items-center gap-2 rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark lg:inline-flex"
             >
               <Phone className="size-4" aria-hidden="true" />
               {site.phone}

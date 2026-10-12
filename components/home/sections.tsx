@@ -84,7 +84,7 @@ export function ServicesPreview() {
           <Reveal>
             <Link
               href="/services"
-              className="group inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold hover:border-brand-green hover:text-brand-green"
+              className="group inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold hover:border-brand-green-dark hover:text-brand-green-dark"
             >
               View all services
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />

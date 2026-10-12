@@ -64,7 +64,7 @@ export function Hero() {
             </a>
             <Link
               href="/services"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-border px-7 py-4 font-semibold text-foreground transition-colors hover:border-brand-green hover:text-brand-green"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-border px-7 py-4 font-semibold text-foreground transition-colors hover:border-brand-green-dark hover:text-brand-green-dark"
             >
               Explore services
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />

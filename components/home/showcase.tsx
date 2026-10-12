@@ -62,7 +62,7 @@ export function CareShowcase() {
                     <Phone className="size-4" aria-hidden="true" />
                     Call now
                   </a>
-                  <EnquireButton className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-light">
+                  <EnquireButton className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark">
                     Enquire now
                   </EnquireButton>
                 </div>

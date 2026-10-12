@@ -22,7 +22,7 @@ export default function NotFound() {
         </Link>
         <a
           href={site.phoneHref}
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 font-semibold transition-colors hover:border-brand-green hover:text-brand-green"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 font-semibold transition-colors hover:border-brand-green-dark hover:text-brand-green-dark"
         >
           <Phone className="size-4" aria-hidden="true" />
           Call us

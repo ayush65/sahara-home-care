@@ -75,7 +75,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <Reveal className="flex flex-col gap-6">
             <Link
               href="/services"
-              className="inline-flex w-fit items-center gap-2 text-sm font-medium text-muted-foreground hover:text-brand-green"
+              className="inline-flex w-fit items-center gap-2 text-sm font-medium text-muted-foreground hover:text-brand-green-dark"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
               All services
@@ -99,7 +99,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hello Sahara Home Health Care, I'd like to know more about ${service.title}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 font-semibold text-white hover:bg-brand-green-light"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 font-semibold text-white hover:bg-brand-green-dark"
               >
                 <WhatsAppIcon className="size-4" />
                 Enquire on WhatsApp
