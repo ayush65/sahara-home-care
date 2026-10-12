@@ -84,6 +84,11 @@ export function SiteHeader() {
         </div>
       </header>
 
+      {/*
+        The mobile menu carries `data-lenis-prevent`: without it, Lenis'
+        window-level wheel listener preventDefaults every scroll, so on a short
+        phone the menu cannot be scrolled at all.
+      */}
       <AnimatePresence>
         {open && (
           <m.nav
@@ -93,7 +98,8 @@ export function SiteHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto bg-white px-4 pb-8 pt-4 sm:top-24 md:hidden"
+            className="fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto overscroll-contain bg-white px-4 pb-8 pt-4 sm:top-24 md:hidden"
+            data-lenis-prevent
           >
             <ul className="flex flex-col divide-y divide-border">
               {navLinks.map((link) => (

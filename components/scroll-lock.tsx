@@ -6,10 +6,19 @@ import { useLenis } from '@/components/lenis-provider'
 /**
  * Freezes page scrolling while `active`.
  *
- * Setting `body { overflow: hidden }` is not enough: Lenis drives the scroll
- * position itself and keeps running, so the page still scrolls behind the
- * overlay. We stop the Lenis instance and, as a fallback for when smooth
- * scrolling is disabled, lock the body too.
+ * Why this does NOT simply set `body { overflow: hidden }`:
+ *
+ * Giving an element `overflow: hidden` makes it a **scroll container**. The
+ * site header is `position: sticky`, and sticky resolves against the nearest
+ * ancestor scrollport — so the moment body became the scrollport, the header
+ * stopped sticking to the viewport and scrolled away with the page. That is why
+ * the logo vanished the instant the mobile menu opened.
+ *
+ * When Lenis is running, `lenis.stop()` is enough: it halts wheel, touch and
+ * keyboard scrolling without touching layout-affecting styles, so sticky keeps
+ * working. The `overflow` hack is only used as a fallback for when Lenis is
+ * absent (reduced-motion users), where we also pin the body so iOS Safari does
+ * not rubber-band behind the overlay.
  */
 export function ScrollLock({ active }: { active: boolean }) {
   const lenis = useLenis()
@@ -17,20 +26,25 @@ export function ScrollLock({ active }: { active: boolean }) {
   useEffect(() => {
     if (!active) return
 
-    lenis?.stop()
+    if (lenis) {
+      lenis.stop()
+      return () => lenis.start()
+    }
 
     const { body } = document
+    const scrollY = window.scrollY
     const previousOverflow = body.style.overflow
     const previousPadding = body.style.paddingRight
-    // Compensate for the removed scrollbar to stop the layout shifting.
     const gap = window.innerWidth - document.documentElement.clientWidth
+
     body.style.overflow = 'hidden'
     if (gap > 0) body.style.paddingRight = `${gap}px`
 
     return () => {
-      lenis?.start()
       body.style.overflow = previousOverflow
       body.style.paddingRight = previousPadding
+      // Un-pin without letting the page jump back to the top.
+      window.scrollTo(0, scrollY)
     }
   }, [active, lenis])
 
