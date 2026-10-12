@@ -101,7 +101,9 @@ export function ServiceBannerCarousel({
                 alt={`${s.title} — Sahara Home Health Care`}
                 fill
                 priority={i === 0}
-                sizes="100vw"
+                // The frame sits inside `max-w-7xl` (1280px) with page padding, so
+                // asking for `100vw` made Next serve a needlessly huge 3840w file.
+                sizes="(min-width: 1280px) 1216px, (min-width: 640px) 94vw, 100vw"
                 className="object-cover"
               />
             </Link>
