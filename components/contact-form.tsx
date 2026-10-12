@@ -3,6 +3,7 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { CalendarCheck, Mail, Send } from 'lucide-react'
 import { services, site } from '@/lib/site'
+import { cn } from '@/lib/utils'
 
 const inputClass =
   'w-full rounded-2xl border border-input bg-white px-4 py-3.5 text-base outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-brand-green focus:ring-4 focus:ring-brand-green/10'
@@ -37,7 +38,14 @@ function useToday() {
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
-export function ContactForm() {
+export function ContactForm({
+  showHeading = true,
+  className,
+}: {
+  /** The popup supplies its own banner heading, so it hides ours. */
+  showHeading?: boolean
+  className?: string
+} = {}) {
   const [status, setStatus] = useState<Status>('idle')
   const [message, setMessage] = useState<string | null>(null)
   const minDate = useToday()
@@ -85,6 +93,8 @@ export function ContactForm() {
 
       setStatus('sent')
       setMessage(null)
+      // A successful enquiry means the visitor converted — never show the popup.
+      document.body.dataset.saharaEnquirySeen = '1'
       form.reset()
     } catch (err) {
       setStatus('error')
@@ -100,15 +110,23 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="flex flex-col gap-6 rounded-[2rem] border border-border bg-white p-6 shadow-[0_30px_60px_-30px_rgba(18,165,42,0.25)] sm:p-10"
+      className={cn(
+        'flex flex-col gap-6 border border-border bg-white p-6 shadow-[0_30px_60px_-30px_rgba(18,165,42,0.25)] sm:p-10',
+        showHeading ? 'rounded-[2rem]' : 'rounded-none border-0 shadow-none',
+        className,
+      )}
     >
-      <div className="flex flex-col gap-2">
-        <h2 className="font-display text-2xl font-semibold sm:text-3xl">Request a free consultation</h2>
-        <p className="text-sm text-muted-foreground">
-          Share a few details and we&apos;ll get back to you shortly. Your enquiry goes straight to our care
-          coordinator.
-        </p>
-      </div>
+      {showHeading && (
+        <div className="flex flex-col gap-2">
+          <h2 className="font-display text-2xl font-semibold sm:text-3xl">
+            Request a free consultation
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Share a few details and we&apos;ll get back to you shortly. Your enquiry goes straight to our
+            care coordinator.
+          </p>
+        </div>
+      )}
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label htmlFor="enquiry-name" className={labelClass}>

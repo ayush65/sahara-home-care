@@ -16,6 +16,7 @@ import type { ComponentType } from 'react'
 import {
   FacebookIcon,
   InstagramIcon,
+  LinkedInIcon,
   YouTubeIcon,
 } from '@/components/social-icons'
 
@@ -32,6 +33,23 @@ export const site = {
   address: '8th Cross Road, Ganesh Block, Nandini Layout, Bengaluru, Karnataka 560096',
   hours: 'Available 24 hours, 7 days a week',
 }
+
+/**
+ * Google Business Profile listing.
+ *
+ * The shared `share.google` URL is a tracking redirect that lands on a SERP
+ * knowledge panel. `kgmid` is the stable identifier behind it, so we link the
+ * canonical form instead — it survives link-rot and keeps the session clean.
+ */
+export const googleBusiness = {
+  kgmid: '/g/11zxq0hhpx',
+  get profileUrl() {
+    return `https://www.google.com/search?kgmid=${this.kgmid}`
+  },
+  get reviewsUrl() {
+    return `${this.profileUrl}&hl=en-IN`
+  },
+} as const
 
 /** Clinic location — resolved from the shared Apple Maps place link. */
 export const location = {
@@ -55,6 +73,7 @@ export const socials: { label: string; href: string; icon: ComponentType<{ class
   { label: 'Facebook', href: 'https://www.facebook.com/R.jinstititution01', icon: FacebookIcon },
   { label: 'Instagram', href: 'https://www.instagram.com/saharahealthcareservice', icon: InstagramIcon },
   { label: 'YouTube', href: 'https://www.youtube.com/@saharahomehealthcare', icon: YouTubeIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sahara-home-health-care-408868442', icon: LinkedInIcon },
 ]
 
 /** Used for schema.org `sameAs` so search engines trust the profiles. */

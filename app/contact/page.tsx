@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Clock, Mail, MapPin, Navigation, Phone } from 'lucide-react'
+import { Clock, Mail, MapPin, Navigation, Phone, Star } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion'
 import { BreadcrumbSchema } from '@/components/seo/JsonLd'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { PageHero, SectionHeading } from '@/components/shared'
 import { siteConfig } from '@/lib/seo'
-import { location, site, socials } from '@/lib/site'
+import { googleBusiness, location, site, socials } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -165,6 +165,15 @@ export default function ContactPage() {
               >
                 <MapPin className="size-4" aria-hidden="true" />
                 Open in Apple Maps
+              </a>
+              <a
+                href={googleBusiness.reviewsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-sm font-semibold transition-colors hover:border-brand-green-dark hover:text-brand-green-dark"
+              >
+                <Star className="size-4" aria-hidden="true" />
+                Read our Google reviews
               </a>
             </div>
           </Reveal>

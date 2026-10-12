@@ -1,4 +1,4 @@
-import { location, socialProfiles } from '@/lib/site'
+import { googleBusiness, location, socialProfiles } from '@/lib/site'
 import { siteConfig } from '@/lib/seo'
 
 export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
@@ -53,7 +53,7 @@ export function OrganizationSchema() {
           longitude: location.lng,
         },
         hasMap: `https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`,
-        sameAs: socialProfiles,
+        sameAs: [...socialProfiles, googleBusiness.profileUrl],
       }}
     />
   )

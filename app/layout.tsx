@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Poppins, Roboto } from 'next/font/google'
 import { MotionProvider } from '@/components/motion'
 import { EnquiryModal, FloatingActions } from '@/components/enquiry-modal'
+import { EnquiryPopup } from '@/components/enquiry-popup'
 import { LenisProvider } from '@/components/lenis-provider'
 import { OrganizationSchema, WebSiteSchema } from '@/components/seo/JsonLd'
 import { SiteFooter } from '@/components/site-footer'
@@ -117,6 +118,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <SiteFooter />
             <FloatingActions />
             <EnquiryModal />
+            <EnquiryPopup />
           </LenisProvider>
         </MotionProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

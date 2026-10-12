@@ -10,6 +10,9 @@ import { site } from '@/lib/site'
 const EVENT = 'sahara:open-enquiry'
 
 export function openEnquiry() {
+  // Tell the delayed popup this visitor has already engaged, so the two never
+  // stack on top of each other.
+  document.body.dataset.saharaEnquirySeen = '1'
   window.dispatchEvent(new CustomEvent(EVENT))
 }
 
