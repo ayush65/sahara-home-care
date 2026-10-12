@@ -4,5 +4,9 @@ minimumReleaseAgeExclude:
   - '@next/*'
   - next
 
+# unrs-resolver (an eslint transitive dep) needs its native binary built.
+# This was previously left as the literal placeholder string
+# "set this to true or false", which made `pnpm install` exit non-zero and
+# broke the Vercel production build.
 allowBuilds:
-  unrs-resolver: set this to true or false
+  unrs-resolver: true
